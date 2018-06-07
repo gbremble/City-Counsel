@@ -31,7 +31,7 @@ var cityArray = [
   }
 ]
 
-$("submitButton").on("click", function() {
+$("#searchButton").on("click", function() {
   event.preventDefault();
 
 //declaring working variables
