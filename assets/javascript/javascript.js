@@ -1,7 +1,9 @@
 // API keys
 // Ticketmaster = L33YkC9wH8KXB7RNBA4rbkakkaT9iKFP
 // Zomato = 3e2640fc9c2ecf3e452dfc86b352db7f
-
+var cityName = ""
+var stateName = ""
+var countryName = ""
 var cityArray = [
   {
     state: "NC",
@@ -34,9 +36,9 @@ $("submitButton").on("click", function() {
 
 //declaring working variables
 console.log("hello")
-var cityName = $("#inputCity").val().trim();
-var stateName = $("#inputState").val().trim();
-var countryName = "USA"
+cityName = $("#inputCity").val().trim();
+stateName = $("#inputState").val().trim();
+countryName = "USA"
 
 });
 
