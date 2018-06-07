@@ -30,5 +30,13 @@ var cityArray = [
 ]
 
 $("submitButton").on("click", function() {
+  event.preventDefault();
+
+//declaring working variables
+console.log("hello")
+var cityName = $("#inputCity").val().trim();
+var stateName = $("#inputState").val().trim();
+var countryName = "USA"
 
 });
+
