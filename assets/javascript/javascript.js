@@ -30,4 +30,10 @@ var cityArray = [{
     state: "NC",
     city: "Asheville"
   }
+<<<<<<< HEAD
 ];
+=======
+]
+
+
+>>>>>>> cb865b0fa74e8bce74467bec6a458e8ea74ab6f6
