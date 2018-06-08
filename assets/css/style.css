@@ -8,6 +8,10 @@ body {
     margin-bottom: 60px;
   }
 
+#stock-image {
+  margin: 30px 0px 30px 0px;
+}
+
   .footer {
     position: absolute;
     bottom: 0;
