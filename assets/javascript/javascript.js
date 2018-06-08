@@ -36,7 +36,7 @@ $(document).ready(function() {
       stateLong: "North Carolina",
       city: "Durham"
     }
-]
+  ]
 
 $("#searchButton").on("click", function() {
   event.preventDefault();
@@ -47,5 +47,5 @@ cityName = $("#inputCity").val().trim();
 stateName = $("#inputState").val().trim();
 countryName = "USA"
 
-});
+  });
 });
