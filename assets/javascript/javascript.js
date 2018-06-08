@@ -31,14 +31,4 @@ var cityArray = [
   }
 ]
 
-$("#searchButton").on("click", function() {
-  event.preventDefault();
-
-//declaring working variables
-console.log("hello")
-cityName = $("#inputCity").val().trim();
-stateName = $("#inputState").val().trim();
-countryName = "USA"
-
-});
 
