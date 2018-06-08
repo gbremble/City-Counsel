@@ -1,4 +1,5 @@
-$("#searchButton").on("click", function () {
+$("#searchButton").on("click", function (event) {
+  event.preventDefault();
   // Empty the image div
   $("#stock-image").empty();
 
@@ -17,10 +18,30 @@ $("#searchButton").on("click", function () {
   var orientation = "landscape";
 
   // Construct a queryURL based on the parameters
-  var queryURL = "https://api.unsplash.com/photos/?client_id" +
+  var queryURL = "https://api.unsplash.com/search/photos/?client_id=" +
     client_id + "&query=" + query + "&page=" + page + "&per_page=" + per_page + "&orientation=" + orientation;
 
   // Log the URL so we have access to it for troubleshooting
   console.log("---------------\nURL: " + queryURL + "\n---------------");
-  
+
+  // Perform an AJAX request with the queryURL
+  $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+    // After data comes back from the request
+    .then(function (response) {
+      console.log(response);
+
+      // Create a an image tag
+      var stockImage = $("<img>");
+      stockImage.addClass("stockImage img-responsive img-thumbnail");
+
+      // Set the stock image source
+      stockImage.attr("src", response.results[0].urls.regular);
+
+      // Append the image to the gif div
+      $("#stock-image").append(stockImage);
+
+    });
 });
