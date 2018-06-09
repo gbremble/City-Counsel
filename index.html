@@ -76,6 +76,29 @@
     <div class="container" id="resultsDiv">
 
     </div>
+    <div class="container">
+      <div class="card mt-4 w-100 d-none" id="restaurantCard">
+        <div class="card-header">
+         <p class="lead font-weight-bold">Popular Restaurants</p>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Restaurant Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Cuisine</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Price Range</th>
+              </tr>
+            </thead>
+            <tbody id="restaurantTable">
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
     <footer class="footer">
         <div class="container">
             City Counsel is a collaborative effort by GB, MB, MB, and SJ
@@ -101,8 +124,9 @@
 
     <!-- our javascript goes here -->
     <script 
-    src="assets/javascript/logic.js"></script>    <script 
-    src="assets/javascript/javascript.js"></script>
+    src="assets/javascript/logic.js"></script>    
+    <script 
+    src="assets/javascript/restaurant.js"></script>
     <script 
     src="assets/javascript/weather.js"></script>
     <script 
