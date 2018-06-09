@@ -14,11 +14,14 @@ var database = firebase.database();
 $("#searchButton").click(function (event) {
     event.preventDefault();
 
+    $("#recentSearchCards").toggleClass("d-none", false);
+
     // interpret the values from the recent search, store them in local object, push to Firebase
     var searchCity = $("#inputCity").val().trim();
     var searchState = $("#inputState").val().trim();
     var searchCountry = $("#inputCountry").val().trim();
 
+    // store the search in a temporary variable
     var newSearch = {
         city: searchCity,
         state: searchState,
@@ -27,3 +30,12 @@ $("#searchButton").click(function (event) {
 
     database.ref().push(newSearch);
 })
+
+// $(document).ready(function() {
+//     database.ref().on("child_added", function (childSnapshot, prevChildKey) {
+//         c
+
+//         var cityFromDB = childSnapshot.val().city;
+//         var stateFromDB = childSnapshot.val().state;
+//         var countryFromDB = childSnapshot.val().country;
+// });
