@@ -84,7 +84,7 @@ $("#searchButton").on("click", function(event) {
     // Add city's latitude to the queryParam object
     queryParams.lat = cityLat;
     // Add city's longitude to the queryParam object
-    queryParams.long = cityLong;
+    queryParams.lon = cityLong;
     
     // build queryURL that will be sent to the API
     var queryURL = apiURL + $.param(queryParams);
