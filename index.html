@@ -65,45 +65,75 @@
             </div>
         </div>
         <!-- Image -->
-       <div class="row stock-image">
-        
-       </div>
-    </div>    
-    
+        <div class="row stock-image">
+
+        </div>
+    </div>
+
     <div class="container" id="resultsDiv">
 
     </div>
     <div class="container">
-      <div class="card mt-4 w-100 d-none" id="restaurantCard">
-        <div class="card-header bg-primary text-white">
-         <h3 class="card-title">Popular Restaurants</h3>
+        <div class="card mt-4 w-100 d-none" id="restaurantCard">
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title">Popular Restaurants</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Restaurant Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Cuisine</th>
+                            <th scope="col">Rating</th>
+                            <th scope="col">Price Range</th>
+                        </tr>
+                    </thead>
+                    <tbody id="restaurantTable">
+
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Restaurant Name</th>
-                <th scope="col">Address</th>
-                <th scope="col">Cuisine</th>
-                <th scope="col">Rating</th>
-                <th scope="col">Price Range</th>
-              </tr>
-            </thead>
-            <tbody id="restaurantTable">
-              
-            </tbody>
-          </table>
-        </div>
-      </div>
     </div>
-    <div class="container">
+    <!-- recent search cards -->
+    <div class="container d-none" id="recentSearchCards">
         <div class="row">
             <div class="col">
-                <div class="card mx-auto recent-search-card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Recently Searched</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the
-                            bulk of the card's content.</p>
+                <div class="card">
+                    <h5 class="card-header">Recently Searched Cities</h5>
+                    <div class="row my-3">
+                        <div class="col mx-3">
+                            <div class="card-deck">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title" id="recentSearch-0">Raleigh, NC</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Recently Searched</h6>
+                                    </div>
+                                    <div class="card-footer" style="background: none;">
+                                        <button type="button" class="btn btn-primary btn-sm btn-block">Search Here</button>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title" id="recentSearch-1">Asheville, NC</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Recently Searched</h6>
+                                    </div>
+                                    <div class="card-footer" style="background: none;">
+                                        <button type="button" class="btn btn-primary btn-sm btn-block">Search Here</button>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title" id="recentSearch-2">Longercityname, NC</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Recently Searched</h6>
+                                    </div>
+                                    <div class="card-footer" style="background: none;">
+                                        <button type="button" class="btn btn-primary btn-sm btn-block">Search Here</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -133,15 +163,12 @@
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 
     <!-- our javascript goes here -->
-    <script 
-    src="assets/javascript/logic.js"></script>    
-    <script 
-    src="assets/javascript/restaurant.js"></script>
-    <script 
-    src="assets/javascript/weather.js"></script>
-    <script 
-    src="assets/javascript/relevant-image.js"></script>
-  
+    <script src="assets/javascript/logic.js"></script>
+    <script src="assets/javascript/restaurant.js"></script>
+    <script src="assets/javascript/weather.js"></script>
+    <script src="assets/javascript/relevant-image.js"></script>
+    <script src="assets/javascript/recent-searches.js"></script>
+
 </body>
 
 

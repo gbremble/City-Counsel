@@ -1,31 +1,32 @@
 html {
     position: relative;
     min-height: 100%;
-  }
+}
 
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
-  }
-
-.stock-image {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  width: 50%;
 }
 
-  .footer {
+.stock-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 50%;
+}
+
+.footer {
     position: absolute;
     bottom: 0;
     width: 100%;
     /* Set the fixed height of the footer here */
     height: 30px;
-    line-height: 30px; /* Vertically center the text there */
+    line-height: 30px;
+    /* Vertically center the text there */
     font-size: 12px;
     color: #fff;
     text-align: center;
     background-color: #222;
-  }
+}
