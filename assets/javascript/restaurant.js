@@ -45,7 +45,7 @@ $(document).ready(function() {
 
 $("#searchButton").on("click", function(event) {
   event.preventDefault();
-
+  $("#restaurantCard").toggleClass("d-none", false);
   // initialize table
   $("#restaurantTable").empty();
 
