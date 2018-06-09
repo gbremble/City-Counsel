@@ -4,44 +4,7 @@ $(document).ready(function() {
   var cityName = ""
   var stateName = ""
   var countryName = ""
-  var cityArray = [
-    {
-      state: "NC",
-      lat: "35.779590",
-      long: "-78.638179",
-      city: "Raleigh"
-    }, 
-    {
-      state: "NC",
-      lat: "35.913200",
-      long: "-79.055845",
-      city: "Chapel Hill"
-    },
-    {
-      state: "NC",
-      lat: "36.044659",
-      long: "-79.766235",
-      city: "Greensboro"
-    },
-    {
-      state: "NC",
-      lat: "34.225726",
-      long: "-77.944710",
-      city: "Wilmington"
-    },
-    {
-      state: "NC",
-      lat: "35.595058",
-      long: "-82.551487",
-      city: "Asheville"
-    },
-    {
-      state: "NC",
-      lat: "35.994033",
-      long: "-78.898619",
-      city: "Durham"
-    }
-  ]
+  console.log(cityArray);
 
 $("#searchButton").on("click", function(event) {
   event.preventDefault();
