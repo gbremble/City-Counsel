@@ -98,10 +98,8 @@ $("#searchButton").on("click", function(event) {
       method: "GET"
     })
     .then(function(response) {
-      console.log(response);
       // storing response
       var results = response.restaurants;
-      console.log(results);
 
       // looping over response to create rows to display response in the restaurant table
       for( var j = 0; j < results.length; j++) {
@@ -110,7 +108,6 @@ $("#searchButton").on("click", function(event) {
         
         // create cell and store restaurant name in it
         var restaurantName = $("<td>").append(results[j].restaurant.name); 
-        console.log(results[j].restaurant.name);
         
         // create cell and store restaurant address in it
         var restaurantAddress = $("<td>").append(results[j].restaurant.location.address);
@@ -138,9 +135,5 @@ $("#searchButton").on("click", function(event) {
   }
   // call the getRestaurant function
   getRestaurants();
-
-  
-  
-  
   });
 });

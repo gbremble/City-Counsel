@@ -64,30 +64,40 @@
                 </form>
             </div>
         </div>
-        <div class="card mt-3 w-100 d-none" id="restaurantCard">
-          <div class="card-header">
-           <p class="lead font-weight-bold">Popular Restaurants</p>
-          </div>
-          <div class="table-responsive">
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">Restaurant Name</th>
-                  <th scope="col">Address</th>
-                  <th scope="col">Cuisine</th>
-                  <th scope="col">Rating</th>
-                  <th scope="col">Price Range</th>
-                </tr>
-              </thead>
-              <tbody id="restaurantTable">
-                
-              </tbody>
-            </table>
-          </div>
-        </div>
     </div>
+    
+    <!-- Stock image -->
+       <div class="row">
+        <div class="col-xs-12" id="stock-image">
+
+        </div>
+       </div>
+    
     <div class="container" id="resultsDiv">
 
+    </div>
+    <div class="container">
+      <div class="card mt-4 w-100 d-none" id="restaurantCard">
+        <div class="card-header">
+         <p class="lead font-weight-bold">Popular Restaurants</p>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Restaurant Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Cuisine</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Price Range</th>
+              </tr>
+            </thead>
+            <tbody id="restaurantTable">
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
     <footer class="footer">
         <div class="container">
@@ -108,6 +118,9 @@
 
     <!-- Bootstrap Select JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <script src="assets/logic.js"></script>
 
     <!-- our javascript goes here -->
     <script 
