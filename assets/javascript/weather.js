@@ -1,8 +1,7 @@
 $("#searchButton").on("click", function(event) {
   event.preventDefault();
+  $("#weatherDiv").remove();
 
-//declaring working variables
-console.log("hello")
 cityName = $("#inputCity").val().trim();
 stateName = $("#inputState").val().trim();
 countryName = "US"
@@ -17,8 +16,8 @@ function getForecast(){
       url: queryURL,
       method: "GET"
     }).then(function(response) {
-      console.log(queryURL);
-      console.log(response);
+      // console.log(queryURL);
+      // console.log(response);
 
     var weatherDiv = $("<div>");
     weatherDiv.addClass("card");
@@ -37,6 +36,7 @@ function getForecast(){
       var conditions = response.list[i].weather[0].main;
       var iconCode = response.list[i].weather[0].icon;
       var conditionDescription = response.list[i].weather[0].description;
+      
 
       tempLow = Math.round((tempLowK * 1.8) - 459.67);
       tempHigh = Math.round((tempHighK * 1.8) - 459.67);
@@ -59,9 +59,6 @@ function getForecast(){
 
       $("#forecastRow").append(dayDiv);
     }
-    // $("#weatherDiv").html('    <div class="card-header bg-primary text-white">                <h3 class="card-title">Weather</h3>              </div>            <div class="card-body">              <table class="table table-striped" id="weather-table">                <thead>                  <tr>                    <th>Day</th>                    <th>Conditions</th>                    <th>High</th>                    <th>Low</th>                    <th>Precipitation</th>                    </tr>                  </thead>                <tbody id="weather-rows">                  </tbody>                </table>');
-
-    // $("#weather-rows").append("<tr><td>" + time + "</td><td>" + conditions + "</td><td>" +  tempHigh + "</td><td>" + tempLow + "</td><td>" + iconImg + "</td></tr>");
 });};
 
 function getCurrentWeather(){
@@ -69,8 +66,8 @@ function getCurrentWeather(){
   url: currentQueryURL,
   method: "GET"
 }).then(function(currentResponse) {
-  console.log(currentQueryURL);
-  console.log(currentResponse);
+  // console.log(currentQueryURL);
+  // console.log(currentResponse);
 
   // var timeU = response.dt
       var tempK = currentResponse.main.temp;
@@ -85,12 +82,6 @@ function getCurrentWeather(){
       iconImg = '<img class="mb-2" src=' + iconURL + ' alt=' + conditionDescription + '>';  
 
       var dayDiv = $("<div>")
-      // dayDiv.addClass("text-justify");
-      // dayDiv.addClass("col-sm-2");
-      // dayDiv.addClass("col-md-2");
-      // dayDiv.addClass("col-lg-2");
-      // dayDiv.addClass("col-xl-2");
-      // dayDiv.attr("currentWeather");
       dayDiv.append(iconImg + "<br>")
       dayDiv.append('<h4 class="pt-0 pb-0 mt-0 mb-0">Currently</h4><br>')
       dayDiv.append('<h5 class ="pt-0 pb-0 mt-0 mb-0">' + conditions + "</h5><br>")
@@ -99,5 +90,5 @@ function getCurrentWeather(){
       $("#current").append(dayDiv);
 });};
 getForecast();
-getCurrentWeather();
+setTimeout(getCurrentWeather, 500);
 })
