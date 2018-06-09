@@ -1,6 +1,5 @@
 // API keys
 // Ticketmaster = L33YkC9wH8KXB7RNBA4rbkakkaT9iKFP
-// Zomato = 3e2640fc9c2ecf3e452dfc86b352db7f
 $(document).ready(function() {
   var cityName = ""
   var stateName = ""
@@ -49,11 +48,13 @@ $("#searchButton").on("click", function(event) {
 
   // initialize table
   $("#restaurantTable").empty();
+
   //declaring working variables
   console.log("hello")
   cityName = $("#inputCity").val().trim();
   stateName = $("#inputState").val().trim();
   countryName = "USA"
+
   // Gets the lat and long of the city the user inputs
   for(var i = 0; i < cityArray.length; i++) {
     console.log(cityArray[i].city);
@@ -88,13 +89,58 @@ $("#searchButton").on("click", function(event) {
     // build queryURL that will be sent to the API
     var queryURL = apiURL + $.param(queryParams);
     console.log(queryURL);
+
+    $.ajax({
+      headers: {
+        "user-key": "3e2640fc9c2ecf3e452dfc86b352db7f"
+      },
+      url: queryURL,
+      method: "GET"
+    })
+    .then(function(response) {
+      console.log(response);
+      // storing response
+      var results = response.restaurants;
+      console.log(results);
+
+      // looping over response to create rows to display response in the restaurant table
+      for( var j = 0; j < results.length; j++) {
+        // create and store table rows
+        var restaurantRow = $("<tr>");
+        
+        // create cell and store restaurant name in it
+        var restaurantName = $("<td>").append(results[j].restaurant.name); 
+        console.log(results[j].restaurant.name);
+        
+        // create cell and store restaurant address in it
+        var restaurantAddress = $("<td>").append(results[j].restaurant.location.address);
+
+        // create cell and store cuisine in it
+        var cuisine = $("<td>").append(results[j].restaurant.cuisines);
+
+        // create cell and store rating in it
+        var rating = $("<td>").append(results[j].restaurant.user_rating.aggregate_rating);
+
+        // create cell and store price range in it
+        var priceRange = $("<td>").append((results[j].restaurant.currency).repeat(results[j].restaurant.price_range));
+        
+        // add all the data to the table row
+        restaurantRow.append(restaurantName);
+        restaurantRow.append(restaurantAddress);
+        restaurantRow.append(cuisine);
+        restaurantRow.append(rating);
+        restaurantRow.append(priceRange);
+
+        // add the row to the table
+        $("#restaurantTable").append(restaurantRow);
+      }
+    })
   }
   // call the getRestaurant function
   getRestaurants();
 
-  var restaurantRow = $("<tr>");
-  var restaurantName = $("<td>").append(cityName);
-  restaurantRow.append(restaurantName);
-  $("#restaurantTable").append(restaurantRow);
+  
+  
+  
   });
 });
