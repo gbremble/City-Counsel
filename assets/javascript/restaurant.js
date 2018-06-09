@@ -68,23 +68,22 @@ $("#searchButton").on("click", function(event) {
   console.log(cityLong);
 
   function getRestaurants() {
-    // URL for Zomato API
-    var apiURL = "https://developers.zomato.com/api/v2.1/search?";
+    // URL for Zomato API's
+    var apiURL = [
+      { 
+      "locations": "https://developers.zomato.com/api/v2.1/locations?"},
+      {"location_details": "https://developers.zomato.com/api/v2.1/location_details?"}
+      ];
 
-    // Object to hold API call's query parameters
-    var queryParams = {
-      "entity_type": "subzone",
-      "radius": 5000,
-      "count": 5,
-      "sort": "rating",
-      "order": "desc"
+    // Array of objects that hold API calls' query parameters
+    var locationQueryParams = {
     };
     // Add city as a search term to the queryParam object
-    queryParams.q = cityName;
+    queryParams.query = cityName;
     // Add city's latitude to the queryParam object
     queryParams.lat = cityLat;
     // Add city's longitude to the queryParam object
-    queryParams.long = cityLong;
+    queryParams.lon = cityLong;
     
     // build queryURL that will be sent to the API
     var queryURL = apiURL + $.param(queryParams);
