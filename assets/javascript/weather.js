@@ -2,6 +2,7 @@ $("#searchButton").on("click", function(event) {
   event.preventDefault();
   $("#weatherDiv").remove();
 
+
 cityName = $("#inputCity").val().trim();
 stateName = $("#inputState").val().trim();
 countryName = "US"
@@ -41,7 +42,7 @@ function getForecast(){
       tempLow = Math.round((tempLowK * 1.8) - 459.67);
       tempHigh = Math.round((tempHighK * 1.8) - 459.67);
       time = moment.unix(timeU).format('dddd');
-      iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
+      iconURL = "https://openweathermap.org/img/w/" + iconCode + ".png";
       iconImg = '<img class="mb-2" src=' + iconURL + ' alt=' + conditionDescription + '>';  
 
       var dayDiv = $("<div>")

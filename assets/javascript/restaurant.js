@@ -23,7 +23,7 @@ $("#searchButton").on("click", function(event) {
     console.log(cityArray[i].city);
     if(cityName === cityArray[i].city) {
       var cityLat = cityArray[i].lat;
-      var cityLong = cityArray[i].long;
+      var cityLong = cityArray[i].lon;
       console.log("success")
     }
   }
