@@ -17,7 +17,13 @@ body {
     width: 50%;
 }
 
-.footer {
+.wiki-info {
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+  .footer {
     position: absolute;
     bottom: 0;
     width: 100%;

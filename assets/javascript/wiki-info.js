@@ -1,7 +1,7 @@
 $("#searchButton").on("click", function (event) {
   event.preventDefault();
-  // Empty the image div
-  $(".stock-image").empty();
+  // Empty the Wikipedia info div
+  $(".wiki-info").empty();
 
   // Get the inputs from the city and state textboxes
   var newCity = $("#inputCity").val().trim();
@@ -38,8 +38,7 @@ $("#searchButton").on("click", function (event) {
       console.log(response);
 
       // Create a div to hold the info
-      var wikiDiv = $("<div>");
-      wikiDiv.addClass("wikiInfo");
+      var wikiText = $("<p>");
 
       // Set a string variable to capture the response text
       var str = response.query.pages[0].extract;
@@ -51,9 +50,9 @@ $("#searchButton").on("click", function (event) {
       console.log(targetText);
 
       // Insert the info
-      wikiDiv.html("<p>" + targetText + "</p>");
+      wikiText.append(targetText);
 
       // Append the wikiDiv to the image div
-      $(".stock-image").append(wikiDiv);
+      $(".wiki-info").append(wikiText);
     });
 });
