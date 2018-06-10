@@ -12,8 +12,8 @@
     <!-- if we want to go above and beyond, we can add a favicon -->
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
 
 
     <!-- Bootstrap Select CSS -->
@@ -64,37 +64,43 @@
                 </form>
             </div>
         </div>
-        <!-- Image -->
-       <div class="row stock-image">
-        
-       </div>
-    </div>    
-    
+        <!-- Image and short Wikipedia description-->
+        <div class="row">
+            <div class="stock-image col-xs-12 col-md-6">
+
+            </div>
+            <div class="wiki-info col-xs-12 col-md-6">
+
+            </div>
+
+        </div>
+    </div>
+
     <div class="container" id="resultsDiv">
 
     </div>
     <div class="container">
-      <div class="card mt-4 w-100 d-none" id="restaurantCard">
-        <div class="card-header bg-primary text-white">
-         <h3 class="card-title">Popular Restaurants</h3>
+        <div class="card mt-4 w-100 d-none" id="restaurantCard">
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title">Popular Restaurants</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Restaurant Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Cuisine</th>
+                            <th scope="col">Rating</th>
+                            <th scope="col">Price Range</th>
+                        </tr>
+                    </thead>
+                    <tbody id="restaurantTable">
+
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Restaurant Name</th>
-                <th scope="col">Address</th>
-                <th scope="col">Cuisine</th>
-                <th scope="col">Rating</th>
-                <th scope="col">Price Range</th>
-              </tr>
-            </thead>
-            <tbody id="restaurantTable">
-              
-            </tbody>
-          </table>
-        </div>
-      </div>
     </div>
     <footer class="footer">
         <div class="container">
@@ -104,10 +110,8 @@
 
     <!-- Optional (Bootstrap) JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
@@ -119,17 +123,12 @@
     <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 
     <!-- our javascript goes here -->
-    <script 
-    src="assets/javascript/cities.js"></script>    
-    <script 
-    src="assets/javascript/restaurant.js"></script>
-    <script 
-    src="assets/javascript/weather.js"></script>
-    <script 
-    src="assets/javascript/relevant-image.js"></script>
-    <script 
-    src="assets/javascript/wiki-info.js"></script>
-  
+    <script src="assets/javascript/cities.js"></script>
+    <script src="assets/javascript/restaurant.js"></script>
+    <script src="assets/javascript/weather.js"></script>
+    <script src="assets/javascript/relevant-image.js"></script>
+    <script src="assets/javascript/wiki-info.js"></script>
+
 </body>
 
 
