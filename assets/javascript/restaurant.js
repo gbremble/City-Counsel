@@ -1,10 +1,12 @@
 // API keys
 // Ticketmaster = L33YkC9wH8KXB7RNBA4rbkakkaT9iKFP
 $(document).ready(function() {
-  var cityName = ""
-  var stateName = ""
-  var countryName = ""
-  console.log(cityArray);
+  var cityName = "";
+  var stateName = "";
+  var countryName = "";
+  var cityNum = 0;
+  var currentCity = {};
+  // console.log(cityArray);
 
 $("#searchButton").on("click", function(event) {
   event.preventDefault();
@@ -14,21 +16,32 @@ $("#searchButton").on("click", function(event) {
 
   //declaring working variables
   console.log("hello")
-  cityName = $("#inputCity").val().trim();
-  stateName = $("#inputState").val().trim();
+  cityName = $("#inputCity").val();
+  // stateName = $("#inputState").val().trim();
   countryName = "USA"
 
-  // Gets the lat and long of the city the user inputs
-  for(var i = 0; i < cityArray.length; i++) {
-    console.log(cityArray[i].city);
-    if(cityName === cityArray[i].city) {
-      var cityLat = cityArray[i].lat;
-      var cityLong = cityArray[i].lon;
-      console.log("success")
-    }
-  }
-  console.log(cityLat);
-  console.log(cityLong);
+   // get the selected city from the city select input field
+   var cityName = $("#inputCity").val();
+   function getCity() {
+     console.log(cityName);
+     cityNum = cityNameArray.indexOf(cityName);
+     console.log(cityNum);
+     currentCity = cityArray[cityNum];
+     console.log(currentCity);
+   }
+   getCity();
+  // // Gets the lat and long of the city the user inputs
+  // for(var i = 0; i < cityArray.length; i++) {
+  //   console.log(cityArray[i].city);
+  //   if(cityName === cityArray[i].city) {
+  //     var cityLat = cityArray[i].lat;
+  //     var cityLong = cityArray[i].lon;
+  //     console.log("success")
+  //   }
+  var cityLat = currentCity.lat;
+  var cityLong = currentCity.lon;
+  console.log(currentCity.lat);
+  console.log(currentCity.lon);
 
   function getRestaurants() {
     // URL for Zomato API

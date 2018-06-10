@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   var selectedCity = "" ;
   var cityNum = 0;
   var currentCity = {};
@@ -14,18 +15,7 @@ $(document).ready(function() {
   // bs-select method to make changes appear
   $(".selectpicker").selectpicker("refresh");
 
-  $("#searchButton").on("click", function(event) {
-    event.preventDefault();
-    // get the selected city from the city select input field
-    selectedCity = $("#inputCity").val();
-    function getCity() {
-      console.log(selectedCity);
-      cityNum = cityNameArray.indexOf(selectedCity);
-      console.log(cityNum);
-      currentCity = cityArray[cityNum];
-      console.log(currentCity);
-    }
-    getCity();
-    
-  });
+  // $("#searchButton").on("click", function(event) {
+  //   event.preventDefault();
+  // });
 });
