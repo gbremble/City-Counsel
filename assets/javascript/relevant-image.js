@@ -6,7 +6,7 @@ $("#searchButton").on("click", function (event) {
   event.preventDefault();
   // Empty the image div
   $(".stock-image").empty();
-  // Get the inputs from the city and state textboxes
+  // Get the inputs from the city select
   cityName = $("#inputCity").val()
   console.log(cityName);
   
