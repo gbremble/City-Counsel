@@ -11,6 +11,9 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+var cityNum = int;
+var currentCity = "";
+
 $("#searchButton").click(function (event) {
     event.preventDefault();
 
@@ -33,15 +36,16 @@ $("#searchButton").click(function (event) {
 });
 
 database.ref().on("value", function (snapshot) {
-    console.log(snapshot.val());
-    console.log(snapshot.val().city);
-    console.log(snapshot.val().state);
-    console.log(snapshot.val().country);
 
     // update the card text
     $("#recentSearch-0").text(snapshot.val().city + ", " + snapshot.val().state);
 
-// handle any errors
+    // handle any errors
 }, function (errorObject) {
     console.log("Errors handled: " + errorObject.code);
 });
+
+function getCity() {
+    cityNum = cityNameArray.indexOf(cityName);
+    currentCity = cityArray[cityNum];
+}
