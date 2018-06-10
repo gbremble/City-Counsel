@@ -8464,4 +8464,4 @@ var cityArray = [
 for(var i=0; i<cityArray.length; i++){
 cityNameArray.push(cityArray[i].city + ", " + cityArray[i].stateShort);
 }
-console.log("city names: " + cityNameArray);
+// console.log("city names: " + cityNameArray);
