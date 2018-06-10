@@ -11,8 +11,9 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-var cityNum = int;
-var currentCity = "";
+// ### BOOTSTRAP SELECT ###
+// var cityNum;
+// var currentCity = "";
 
 $("#searchButton").click(function (event) {
     event.preventDefault();
@@ -33,6 +34,11 @@ $("#searchButton").click(function (event) {
     };
 
     database.ref().set(newSearch);
+
+    // ### BOOTSTRAP SELECT ###
+    // getCity();
+
+    // database.ref().set(currentCity);
 });
 
 database.ref().on("value", function (snapshot) {
@@ -45,7 +51,8 @@ database.ref().on("value", function (snapshot) {
     console.log("Errors handled: " + errorObject.code);
 });
 
-function getCity() {
-    cityNum = cityNameArray.indexOf(cityName);
-    currentCity = cityArray[cityNum];
-}
+// ### BOOTSTRAP SELECT ###
+// function getCity() {
+//     cityNum = cityNameArray.indexOf(cityName);
+//     currentCity = cityArray[cityNum];
+// }
