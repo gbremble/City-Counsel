@@ -14,7 +14,7 @@ var database = firebase.database();
 $("#searchButton").click(function (event) {
     event.preventDefault();
 
-    $("#recentSearchCards").toggleClass("d-none", false);
+    $("#recentSearchCards").toggleClass("d-none", true);
 
     // interpret the values from the recent search, store them in local object, push to Firebase
     var searchCity = $("#inputCity").val().trim();
@@ -25,17 +25,23 @@ $("#searchButton").click(function (event) {
     var newSearch = {
         city: searchCity,
         state: searchState,
-        country: searchCountry
+        country: searchCountry,
+        timestamp: firebase.database.ServerValue.TIMESTAMP
     };
 
-    database.ref().push(newSearch);
-})
+    database.ref().set(newSearch);
+});
 
-// $(document).ready(function() {
-//     database.ref().on("child_added", function (childSnapshot, prevChildKey) {
-//         c
+database.ref().on("value", function (snapshot) {
+    console.log(snapshot.val());
+    console.log(snapshot.val().city);
+    console.log(snapshot.val().state);
+    console.log(snapshot.val().country);
 
-//         var cityFromDB = childSnapshot.val().city;
-//         var stateFromDB = childSnapshot.val().state;
-//         var countryFromDB = childSnapshot.val().country;
-// });
+    // update the card text
+    $("#recentSearch-0").text(snapshot.val().city + ", " + snapshot.val().state);
+
+// handle any errors
+}, function (errorObject) {
+    console.log("Errors handled: " + errorObject.code);
+});
