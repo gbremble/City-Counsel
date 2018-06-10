@@ -18,11 +18,8 @@ $("#searchButton").on("click", function(event) {
 
    // function that will return the selected city object from the cityArray
    function getCity() {
-     console.log(cityName);
      cityNum = cityNameArray.indexOf(cityName);
-     console.log(cityNum);
      currentCity = cityArray[cityNum];
-     console.log(currentCity);
    }
    // calling the getCity function
    getCity();
@@ -31,6 +28,9 @@ $("#searchButton").on("click", function(event) {
   var cityLat = currentCity.lat;
   // grabbing and storing the latitude for the selected city
   var cityLong = currentCity.lon;
+  // grabbing and storing city and state for the selected city
+  var citySearch = currentCity.city + ", " + currentCity.stateShort;
+
 
   function getRestaurants() {
     // URL for Zomato API
@@ -45,7 +45,7 @@ $("#searchButton").on("click", function(event) {
       "order": "desc"
     };
     // Add city as a search term to the queryParam object
-    queryParams.q = cityName;
+    queryParams.q = currentCity.citySearch;
     // Add city's latitude to the queryParam object
     queryParams.lat = cityLat;
     // Add city's longitude to the queryParam object

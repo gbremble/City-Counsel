@@ -1,68 +1,80 @@
-// $("#searchButton").on("click", function (event) {
-//   event.preventDefault();
-//   // Empty the image div
-//   $(".stock-image").empty();
+var cityName = "";
+var cityNum = 0;
+var currentCity = {};
 
-//   // Get the inputs from the city and state textboxes
-//   var newCity = $("#inputCity").val().trim();
-//   var newState = $("#inputState").val().trim();
+$("#searchButton").on("click", function (event) {
+  event.preventDefault();
+  // Empty the image div
+  $(".stock-image").empty();
+  // Get the inputs from the city and state textboxes
+  cityName = $("#inputCity").val()
+  console.log(cityName);
   
-//   // Set a search variable for the city / state value
-//   var citySearch = "";
+  // function that will return the selected city object from the cityArray
+  function getCity() {
+  cityNum = cityNameArray.indexOf(cityName);
+  currentCity = cityArray[cityNum];
+  }
 
-//   // Check to see if eithr the city or state are blank
-//   if (newCity == "" || newState == "") {
-//     // If either are blank, default to...
-//     var citySearch = "Raleigh, NC skyline";
-//   } else {
-//     var citySearch = newCity + ", " + newState + " skyline";
-//   }
+  // calling the getCity function
+  getCity();
 
-//   // Log the result as a check
-//   console.log("The city is :" + newCity + ", " + newState);
+  // Set a search variable for the city / state value
+  var citySearch = "";
 
-//   // Establish the Flickr API parameters
-//   // Reference https://www.flickr.com/services/api/flickr.photos.search.html for info
-//   var api_key = "9c1a367e62f5f09dd9bc8e5fafa2f6a9";
-//   var page = 1;
-//   var per_page = 5;
-//   var format = "json";
-//   var callback = 1; // for json response formatting
-//   var extras = "description, url_c, url_l, url_o";
-//   var safe_search = 1; // safe
-//   var content_type = 1; // photos only
+  // Check to see if the city is blank
+  if (cityName == "") {
+    // If it's blank, default to...
+    citySearch = "Raleigh, NC skyline";
+  } else {
+    citySearch = currentCity.city + ", " + currentCity.stateShort + " skyline";
+  }
 
-//   // Create variables for min / max to create a random number of pictures to choose from
-//   var targetMax = 5;
-//   var targetMin = 0;
+  // Log the result as a check
+  console.log("The city is : " + currentCity.city + ", " + currentCity.stateShort);
 
-//   // Create a variable for the random target number
-//   var targetNumber = Math.floor(Math.random() * targetMax) + targetMin;
+  // Establish the Flickr API parameters
+  // Reference https://www.flickr.com/services/api/flickr.photos.search.html for info
+  var api_key = "9c1a367e62f5f09dd9bc8e5fafa2f6a9";
+  var page = 1;
+  var per_page = 5;
+  var format = "json";
+  var callback = 1; // for json response formatting
+  var extras = "description, url_c, url_l, url_o";
+  var safe_search = 1; // safe
+  var content_type = 1; // photos only
 
-//   // Construct a queryURL based on the Flickr parameters
-//   var queryURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + api_key + "&text=" + citySearch + "&extras=" + extras + "&page=" + page + "&per_page=" + per_page + "&safe_search=" + safe_search + "&content_type=" + content_type + "&format=" + format + "&nojsoncallback=" + callback;
+  // Create variables for min / max to create a random number of pictures to choose from
+  var targetMax = 5;
+  var targetMin = 0;
 
-//   // Log the URL so we have access to it for troubleshooting
-//   console.log("---------------\nURL: " + queryURL + "\n---------------");
+  // Create a variable for the random target number
+  var targetNumber = Math.floor(Math.random() * targetMax) + targetMin;
 
-//   // Perform an AJAX request with the queryURL
-//   $.ajax({
-//       url: queryURL,
-//       method: "GET"
-//     })
-//     // After data comes back from the request
-//     .then(function (response) {
-//       console.log(response);
+  // Construct a queryURL based on the Flickr parameters
+  var queryURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + api_key + "&text=" + citySearch + "&extras=" + extras + "&page=" + page + "&per_page=" + per_page + "&safe_search=" + safe_search + "&content_type=" + content_type + "&format=" + format + "&nojsoncallback=" + callback;
 
-//       // Create a an image tag
-//       var stockImage = $("<img>");
-//       stockImage.addClass("stockImage img-responsive img-thumbnail");
+  // Log the URL so we have access to it for troubleshooting
+  console.log("---------------\nURL: " + queryURL + "\n---------------");
 
-//       // Set the stock image source to the Flickr result
-//       stockImage.attr("src", response.photos.photo[targetNumber].url_l);
+  // Perform an AJAX request with the queryURL
+  $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+    // After data comes back from the request
+    .then(function (response) {
+      console.log(response);
 
-//       // Append the image to the image div
-//       $(".stock-image").append(stockImage);
+      // Create a an image tag
+      var stockImage = $("<img>");
+      stockImage.addClass("stockImage img-responsive img-thumbnail");
 
-//     });
-// });
+      // Set the stock image source to the Flickr result
+      stockImage.attr("src", response.photos.photo[targetNumber].url_l);
+
+      // Append the image to the image div
+      $(".stock-image").append(stockImage);
+
+    });
+});
