@@ -1,38 +1,61 @@
 html {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.jumbotron-custom {
+  background-image: url("../images/vita-vilcina-3054-unsplash.jpg");
+  background-size: cover;
+  background-position: center center;
+  border-radius: 6px;
+  margin: 20px 0px 20px 0px;
+  font-family: 'Righteous', cursive;
+  color: #fdfefe;
+  text-shadow: 2px 2px #000000;
+}
+
+.display-4,
+.lead {
+  color: #fdfefe;
+  font-family: 'Righteous', cursive;
+  text-shadow: 2px 2px #000000;
+  border-top: 0px;
+}
+
+.lead {
+  background-color: rgba(253, 254, 254, 0.3)
 }
 
 .stock-image {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 50%;
 }
 
 .wiki-info {
-    display: block;
-    margin-top: auto;
-    margin-bottom: auto;
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 30px;
-    line-height: 30px;
-    /* Vertically center the text there */
-    font-size: 12px;
-    color: #fff;
-    text-align: center;
-    background-color: #222;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+  line-height: 30px;
+  /* Vertically center the text there */
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  background-color: #222;
 }
