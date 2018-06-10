@@ -12,8 +12,8 @@ $("#searchButton").on("click", function (event) {
 
   // function that will return the selected city object from the cityArray
   function getCity() {
-  cityNum = cityNameArray.indexOf(cityName);
-  currentCity = cityArray[cityNum];
+    cityNum = cityNameArray.indexOf(cityName);
+    currentCity = cityArray[cityNum];
   }
 
   // calling the getCity function
