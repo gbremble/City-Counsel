@@ -1,24 +1,24 @@
-$("#searchButton").on("click", function(event) {
+var cityName = "";
+var cityNum = 0;
+var currentCity = {};
+
+$("#searchButton").on("click", function (event) {
   event.preventDefault();
+  // Empty the Wikipedia info div
+  $(".wiki-info").empty();
 
-var  cityName = $("#inputCity").val().trim();
-var  stateName = $("#inputState").val().trim();
-var  countryName = "US"
-  
-// var newcityName = currentCity.name;
-// var newstateName = currentCity.stateShort;
-// var newcountryName = currentCity.country;
-// var newcityLat = currentCity.lat;
-// var newcityLon = currentCity.lon;
+  // Get the inputs from the city select
+  cityName = $("#inputCity").val();
 
-for(var i = 0; i < cityArray.length; i++) {
-  console.log(cityArray[i].city);
-  if(cityName === cityArray[i].city) {
-    var cityLat = cityArray[i].lat;
-    var cityLon = cityArray[i].lon;
-    console.log("success")
+  // function that will return the selected city object from the cityArray
+  function getCity() {
+    cityNum = cityNameArray.indexOf(cityName);
+    currentCity = cityArray[cityNum];
   }
-}
+
+  // calling the getCity function
+  getCity();
+  
 console.log(cityLat);
 console.log(cityLon);
 
