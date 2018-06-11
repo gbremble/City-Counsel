@@ -36,7 +36,7 @@ $("#searchButton").on("click", function (event) {
 
   // Reference https://www.mediawiki.org/wiki/API:Query for query related info
   // Construct a queryURL based on the mediaWiki parameters
-  var queryURL = "http://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&exintro=1&titles=" + citySearch + "&redirects&origin=*&formatversion=2";
+  var queryURL = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&exintro=1&titles=" + citySearch + "&redirects&origin=*&formatversion=2";
 
   // Log the URL so we have access to it for troubleshooting
   console.log("---------------\nURL: " + queryURL + "\n---------------");
