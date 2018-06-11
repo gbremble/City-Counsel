@@ -1,10 +1,8 @@
-// API keys
-// Ticketmaster = L33YkC9wH8KXB7RNBA4rbkakkaT9iKFP
 $(document).ready(function() {
-  var cityName = ""
-  var stateName = ""
-  var countryName = ""
-  console.log(cityArray);
+  var cityName = "";
+  var cityNum = 0;
+  var currentCity = {};
+  // console.log(cityArray);
 
 $("#searchButton").on("click", function(event) {
   event.preventDefault();
@@ -14,21 +12,25 @@ $("#searchButton").on("click", function(event) {
 
   //declaring working variables
   console.log("hello")
-  cityName = $("#inputCity").val().trim();
-  stateName = $("#inputState").val().trim();
-  countryName = "USA"
 
-  // Gets the lat and long of the city the user inputs
-  for(var i = 0; i < cityArray.length; i++) {
-    console.log(cityArray[i].city);
-    if(cityName === cityArray[i].city) {
-      var cityLat = cityArray[i].lat;
-      var cityLong = cityArray[i].long;
-      console.log("success")
-    }
-  }
-  console.log(cityLat);
-  console.log(cityLong);
+   // get the selected city from the city select input field
+   cityName = $("#inputCity").val();
+
+   // function that will return the selected city object from the cityArray
+   function getCity() {
+     cityNum = cityNameArray.indexOf(cityName);
+     currentCity = cityArray[cityNum];
+   }
+   // calling the getCity function
+   getCity();
+ 
+  // grabbing and storing the latitude for the selected city
+  var cityLat = currentCity.lat;
+  // grabbing and storing the latitude for the selected city
+  var cityLong = currentCity.lon;
+  // grabbing and storing city and state for the selected city
+  var citySearch = currentCity.city + ", " + currentCity.stateShort;
+
 
   function getRestaurants() {
     // URL for Zomato API
@@ -43,7 +45,7 @@ $("#searchButton").on("click", function(event) {
       "order": "desc"
     };
     // Add city as a search term to the queryParam object
-    queryParams.q = cityName;
+    queryParams.q = currentCity.citySearch;
     // Add city's latitude to the queryParam object
     queryParams.lat = cityLat;
     // Add city's longitude to the queryParam object

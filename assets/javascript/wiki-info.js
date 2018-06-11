@@ -1,29 +1,42 @@
+var cityName = "";
+var cityNum = 0;
+var currentCity = {};
+
 $("#searchButton").on("click", function (event) {
   event.preventDefault();
-  // Empty the image div
-  $(".stock-image").empty();
+  // Empty the Wikipedia info div
+  $(".wiki-info").empty();
 
-  // Get the inputs from the city and state textboxes
-  var newCity = $("#inputCity").val().trim();
-  var newState = $("#inputState").val().trim();
+  // Get the inputs from the city select
+  cityName = $("#inputCity").val();
+
+  // function that will return the selected city object from the cityArray
+  function getCity() {
+    cityNum = cityNameArray.indexOf(cityName);
+    currentCity = cityArray[cityNum];
+  }
+
+  // calling the getCity function
+  getCity();
 
   // Set a search variable for the city / state value
   var citySearch = "";
 
-  // Check to see if eithr the city or state are blank
-  if (newCity == "" || newState == "") {
-    // If either are blank, default to...
-    var citySearch = "Raleigh, NC";
+  // Check to see if the city is blank
+  if (cityName == "") {
+    // If it's blank, default to...
+    citySearch = "Raleigh, NC";
   } else {
-    var citySearch = newCity + ", " + newState;
+    citySearch = currentCity.city + ", " + currentCity.stateShort;
   }
 
   // Log the result as a check
-  console.log("The city is :" + newCity + ", " + newState);
+  console.log("The city is : " + currentCity.city + ", " + currentCity.stateShort);
+
 
   // Reference https://www.mediawiki.org/wiki/API:Query for query related info
   // Construct a queryURL based on the mediaWiki parameters
-  var queryURL = "http://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&exintro=1&titles=" + citySearch + "&redirects&origin=*&formatversion=2";
+  var queryURL = "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&exintro=1&titles=" + citySearch + "&redirects&origin=*&formatversion=2";
 
   // Log the URL so we have access to it for troubleshooting
   console.log("---------------\nURL: " + queryURL + "\n---------------");
@@ -38,8 +51,7 @@ $("#searchButton").on("click", function (event) {
       console.log(response);
 
       // Create a div to hold the info
-      var wikiDiv = $("<div>");
-      wikiDiv.addClass("wikiInfo");
+      var wikiText = $("<p>");
 
       // Set a string variable to capture the response text
       var str = response.query.pages[0].extract;
@@ -51,9 +63,9 @@ $("#searchButton").on("click", function (event) {
       console.log(targetText);
 
       // Insert the info
-      wikiDiv.html("<p>" + targetText + "</p>");
+      wikiText.append(targetText);
 
       // Append the wikiDiv to the image div
-      $(".stock-image").append(wikiDiv);
+      $(".wiki-info").append(wikiText);
     });
 });

@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
 
     <!-- Additional CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 
 
@@ -31,7 +32,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="jumbotron" style="background: rgba(233, 236, 239, 0.2)">
+                <div class="jumbotron jumbotron-custom">
                     <h1 class="display-4">City Counsel</h1>
                     <hr class="my-4">
                     <p class="lead">
@@ -46,55 +47,96 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputCity">City</label>
-                            <input type="text" class="form-control" id="inputCity">
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="inputState">State</label>
-                            <select id="inputState" class="custom-select form-control">
-                                <option selected>Choose…</option>
-                                <option>NC</option>
+                            <select class="form-control selectpicker" data-live-search="true" data-size=5 data-title="Select a City" id="inputCity">
                             </select>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputCountry">Country</label>
-                            <input type="text" class="form-control" id="inputCountry" placeholder="U.S.A." readonly>
+                        <div class="col-md-6">
+                          <button type="submit" class="btn btn-primary btn-lg ml-sm-3 my-sm-4" id="searchButton">Search</button>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg" id="searchButton">Search</button>
                 </form>
             </div>
         </div>
-        <!-- Image -->
-       <div class="row stock-image">
-        
-       </div>
-    </div>    
-    
+        <!-- Image and short Wikipedia description-->
+        <div class="row">
+            <div class="stock-image col-xs-12 col-md-6">
+
+            </div>
+            <div class="wiki-info col-xs-12 col-md-6">
+
+            </div>
+
+        </div>
+    </div>
+
     <div class="container" id="resultsDiv">
 
     </div>
     <div class="container">
-      <div class="card mt-4 w-100 d-none" id="restaurantCard">
-        <div class="card-header bg-primary text-white">
-         <h3 class="card-title">Popular Restaurants</h3>
+        <div class="card mb-3 w-100 d-none" id="restaurantCard">
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title">Popular Restaurants</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Restaurant Name</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Cuisine</th>
+                            <th scope="col">Rating</th>
+                            <th scope="col">Price Range</th>
+                        </tr>
+                    </thead>
+                    <tbody id="restaurantTable">
+
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Restaurant Name</th>
-                <th scope="col">Address</th>
-                <th scope="col">Cuisine</th>
-                <th scope="col">Rating</th>
-                <th scope="col">Price Range</th>
-              </tr>
-            </thead>
-            <tbody id="restaurantTable">
-              
-            </tbody>
-          </table>
+    </div>
+    <!-- recent search cards -->
+    <div class="container" id="recentSearchCards">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header bg-primary text-white">Recently Searched Cities</h5>
+                    <div class="row my-3">
+                        <div class="col mx-3">
+                            <div class="card-deck">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title" id="recentSearch-0">Raleigh, NC</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Recently Searched</h6>
+                                    </div>
+                                    <!-- <div class="card-footer" style="background: none;">
+                                        <button type="button" class="btn btn-primary btn-sm btn-block">Search Here</button>
+                                    </div> -->
+                                </div>
+                                <div class="card invisible">
+                                    <div class="card-body">
+                                        <h5 class="card-title" id="recentSearch-1">Asheville, NC</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Recently Searched</h6>
+                                    </div>
+                                    <!-- <div class="card-footer" style="background: none;">
+                                        <button type="button" class="btn btn-primary btn-sm btn-block">Search Here</button>
+                                    </div> -->
+                                </div>
+                                <div class="card invisible">
+                                    <div class="card-body">
+                                        <h5 class="card-title" id="recentSearch-2">Longercityname, NC</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Recently Searched</h6>
+                                    </div>
+                                    <!-- <div class="card-footer" style="background: none;">
+                                        <button type="button" class="btn btn-primary btn-sm btn-block">Search Here</button>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <footer class="footer">
         <div class="container">
@@ -104,10 +146,8 @@
 
     <!-- Optional (Bootstrap) JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
@@ -118,7 +158,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 
+    <!-- Firebase JS -->
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
     <!-- our javascript goes here -->
+<<<<<<< HEAD
     <script 
     src="assets/javascript/cities.js"></script>    
     <script 
@@ -131,6 +175,15 @@
     <script 
     src="assets/javascript/wiki-info.js"></script>
   
+=======
+    <script src="assets/javascript/cities-data.js"></script>
+    <script src="assets/javascript/city-select-options.js"></script>    
+    <script src="assets/javascript/restaurant.js"></script>
+    <script src="assets/javascript/weather.js"></script>
+    <script src="assets/javascript/relevant-image.js"></script>
+    <script src="assets/javascript/wiki-info.js"></script>
+    <script src="assets/javascript/recent-searches.js"></script>
+>>>>>>> f46bf5a4ba07a5c62f9e95a99f925172de84e3f9
 </body>
 
 
