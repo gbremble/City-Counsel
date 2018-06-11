@@ -189,8 +189,3 @@ var testObject = {
         "time": 1528685405569
     }
 }
-
-console.log("test:" + testObject["-LEgk1JWUq0XKUnY2ZlD"]
-
-
-
