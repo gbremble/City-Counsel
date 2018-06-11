@@ -11,6 +11,8 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+var timestamp = firebase.database.ServerValue.TIMESTAMP;
+
 // ### BOOTSTRAP SELECT ###
 // var cityNum;
 // var currentCity = "";
@@ -33,7 +35,18 @@ $("#searchButton").click(function (event) {
         timestamp: firebase.database.ServerValue.TIMESTAMP
     };
 
-    database.ref().set(newSearch);
+    database.ref('searches/' + timestamp).set({
+        city: searchCity,
+        state: searchState,
+        country: searchCountry,
+        time: firebase.database.ServerValue.TIMESTAMP
+    }, function (error) {
+        if (error) {
+            console.log("The write failed. Code: " + error.code);
+        } else {
+            console.log("Data saved successfully!")
+        }
+    });
 
     // ### BOOTSTRAP SELECT ###
     // getCity();
@@ -47,8 +60,12 @@ database.ref().on("value", function (snapshot) {
     $("#recentSearch-0").text(snapshot.val().city + ", " + snapshot.val().state);
 
     // handle any errors
-}, function (errorObject) {
-    console.log("Errors handled: " + errorObject.code);
+}, function (error) {
+    if (error) {
+        console.log("The write failed. Code: " + error.code);
+    } else {
+        console.log("Data saved successfully!")
+    }
 });
 
 // ### BOOTSTRAP SELECT ###
