@@ -8,7 +8,7 @@ $("#searchButton").on("click", function (event) {
   $(".wiki-info").empty();
 
   // Get the inputs from the city select
-  cityName = $("#inputCity").val()
+  cityName = $("#inputCity").val();
 
   // function that will return the selected city object from the cityArray
   function getCity() {

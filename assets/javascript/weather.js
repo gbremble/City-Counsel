@@ -7,7 +7,7 @@ $("#searchButton").on("click", function(event) {
   $("#weatherDiv").remove();
 
 
-cityName = $("#inputCity").val()
+cityName = $("#inputCity").val();
 
 // function that will return the selected city object from the cityArray
 function getCity() {

@@ -7,7 +7,7 @@ $("#searchButton").on("click", function (event) {
   // Empty the image div
   $(".stock-image").empty();
   // Get the inputs from the city select
-  cityName = $("#inputCity").val()
+  cityName = $("#inputCity").val();
   console.log(cityName);
   
   // function that will return the selected city object from the cityArray
