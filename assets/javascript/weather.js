@@ -4,7 +4,10 @@ var currentCity = {};
 
 $("#searchButton").on("click", function(event) {
   event.preventDefault();
-  $("#weatherDiv").remove();
+  $("#weatherDiv").toggleClass("d-none", false);
+  // initialize table
+  $("#forecastRow").empty();
+
 
 
 cityName = $("#inputCity").val();
@@ -28,19 +31,19 @@ function getForecast(){
       method: "GET"
     }).then(function(response) {
       // console.log(queryURL);
-      // console.log(response);
+      console.log(response);
 
-    var weatherDiv = $("<div>");
-    weatherDiv.addClass("card");
-    weatherDiv.addClass("mt-3");
-    weatherDiv.addClass("mb-3");
-    weatherDiv.attr("id", "weatherDiv");
+    // var weatherDiv = $("<div>");
+    // weatherDiv.addClass("card");
+    // weatherDiv.addClass("mt-3");
+    // weatherDiv.addClass("mb-3");
+    // weatherDiv.attr("id", "weatherDiv");
     
-    $("#resultsDiv").append(weatherDiv);
+    // $("#resultsDiv").append(weatherDiv);
 
-    $("#weatherDiv").html('    <div class="card-header bg-primary text-white">                <h3 class="card-title">Weather</h3>              </div>            <div class="card-body"> <div class="container"> <div class="row" id="forecastRow"><div class="col-sm-2 col-md-2 col-lg-2 col-xl-2" id="current">                          </div></div></div></div>');
+    // $("#weatherDiv").html('    <div class="card-header bg-primary text-white">                <h3 class="card-title">Weather</h3>              </div>            <div class="card-body"> <div class="container"> <div class="row" id="forecastRow"><div class="col-sm-2 col-md-2 col-lg-2 col-xl-2" id="current">                          </div></div></div></div>');
 
-    for (i=1; i<6; i++) {
+    for (i=0; i<5; i++) {
       var timeU = response.list[i].dt
       var tempLowK = response.list[i].temp.min
       var tempHighK = response.list[i].temp.max
@@ -51,23 +54,29 @@ function getForecast(){
 
       tempLow = Math.round((tempLowK * 1.8) - 459.67);
       tempHigh = Math.round((tempHighK * 1.8) - 459.67);
-      time = moment.unix(timeU).format('dddd');
+      time = moment.unix(timeU).format('ddd');
       iconURL = "https://openweathermap.org/img/w/" + iconCode + ".png";
-      iconImg = '<img class="mb-2" src=' + iconURL + ' alt=' + conditionDescription + '>';  
+      iconImg = '<img class="mt-0 mb-0 weatherIcon" src=' + iconURL + ' height="45" width="45" alt="' + conditionDescription + '">';  
 
-      var dayDiv = $("<div>")
+      var dayDiv = $("<div>");
       dayDiv.addClass("text-justify");
-      dayDiv.addClass("col-sm-2");
-      dayDiv.addClass("col-md-2");
-      dayDiv.addClass("col-lg-2");
+      dayDiv.addClass("col-xs-12")
+      dayDiv.addClass("col-sm-6");
+      dayDiv.addClass("col-md-4");
+      dayDiv.addClass("col-lg-4");
       dayDiv.addClass("col-xl-2");
-      dayDiv.attr("dayNum", i+1);
-      dayDiv.append(iconImg + "<br>")
-      dayDiv.append('<h4 class="pt-0 pb-0 mt-0 mb-0">' + time + '</h4><br>')
-      dayDiv.append('<h5 class ="pt-0 pb-0 mt-0 mb-0">' + conditions + "</h5><br>")
-      dayDiv.append("High: " + tempHigh + "º<br>");
-      dayDiv.append("Low: " + tempLow + "º");
-
+      var weathDiv = $("<div>");
+      weathDiv.addClass("card ml-0 mr-0 mt-2 mb-2 h-95")
+      weathDiv.attr("dayNum", i+1);
+      weathDiv.append("<div class='card-header bg-secondary text-white'><div class='float-left'><h3 class='align-bottom pb-0 mb-0'>" + time + "</h3></div><div class='float-right small mt-0 pt-0'>" + iconImg + "</div><div class='clearfix'></div></div>");
+      // weathDiv.append(iconImg + "<br>")
+      // weathDiv.append('<h4 class="pt-0 pb-0 mt-0 mb-0">' + time + '</h4><br>')
+      var weathBody = $("<div class='card-body mb-4 mt-4'>");
+      weathBody.append('<h3 class ="card-title text-truncate align-top pt-0 pb-0 mt-0 mb-0">' + conditions + "</h3><br>")
+      weathBody.append("<h5 class='card-subtitle'>High: " + tempHigh + "º</h5>");
+      weathBody.append("<h5 class='card-subtitle'>Low: " + tempLow + "º </h5>");
+      weathDiv.append(weathBody);
+      dayDiv.append(weathDiv);
       $("#forecastRow").append(dayDiv);
     }
 });};
@@ -90,15 +99,26 @@ function getCurrentWeather(){
 
       // time = moment.unix(timeU).format('dddd');
       iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
-      iconImg = '<img class="mb-2" src=' + iconURL + ' alt=' + conditionDescription + '>';  
+      iconImg = '<img class="mb-0" src=' + iconURL + ' height="45" width="45" alt=' + conditionDescription + '>';  
 
-      var dayDiv = $("<div>")
-      dayDiv.append(iconImg + "<br>")
-      dayDiv.append('<h4 class="pt-0 pb-0 mt-0 mb-0">Currently</h4><br>')
-      dayDiv.append('<h5 class ="pt-0 pb-0 mt-0 mb-0">' + conditions + "</h5><br>")
-      dayDiv.append('<h1 class="pt-0 pb-0 mt-0 mb-0">' + temp + "º</h1><br>");
+      var dayDiv = $("<div>");
+      dayDiv.addClass("text-justify");
+      dayDiv.addClass("col-xs-12")
+      dayDiv.addClass("col-sm-6");
+      dayDiv.addClass("col-md-4");
+      dayDiv.addClass("col-lg-4");
+      dayDiv.addClass("col-xl-2");
+      var weathDiv = $("<div>");
+      weathDiv.addClass("card ml-0 mr-0 mt-2 mb-2 h-95")
+      weathDiv.attr("dayNum", i+1);
+      weathDiv.append("<div class='card-header bg-secondary text-white'><div class='float-left'><h3 class='align-bottom pb-0 mb-0'> Now </h3></div><div class='float-right small mt-0 pt-0'>" + iconImg + "</div><div class='clearfix'></div></div>");
+      var weathBody = $("<div class='card-body mb-4  mt-4'>");
+      weathBody.append('<h3 class ="card-title text-truncate align-top pt-0 pb-200 mt-0 mb-0">' + conditions + "</h3><br>")
+      weathBody.append("<h2 class='card-subtitle lh-2'>" + temp + "º</h2>");
+      weathDiv.append(weathBody);
+      dayDiv.append(weathDiv);
 
-      $("#current").append(dayDiv);
+      $("#forecastRow").prepend(dayDiv);
 });};
 getForecast();
 setTimeout(getCurrentWeather, 500);
