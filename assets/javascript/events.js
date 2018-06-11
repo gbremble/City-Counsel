@@ -23,7 +23,7 @@ console.log(cityLat);
 console.log(cityLon);
 
 var APIKey = "wmKcj9CwphKVnTWv";
-var queryURL = "https://api.eventful.com/rest/events/where=" + cityLat + "," + cityLon + "&within=25&authentication=" + APIKey;
+var queryURL = "https://api.eventful.com/json/events/search?...&where=" + cityLat + "," + cityLon + "&within=25&authorization=" + APIKey;
 function getEvents(){
     $.ajax({
       url: queryURL,
