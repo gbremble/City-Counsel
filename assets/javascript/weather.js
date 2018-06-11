@@ -1,17 +1,27 @@
+var cityName = "";
+var cityNum = 0;
+var currentCity = {};
+
 $("#searchButton").on("click", function(event) {
   event.preventDefault();
   $("#weatherDiv").remove();
 
 
-cityName = $("#inputCity").val().trim();
-stateName = $("#inputState").val().trim();
-countryName = "US"
+cityName = $("#inputCity").val();
 
+// function that will return the selected city object from the cityArray
+function getCity() {
+  cityNum = cityNameArray.indexOf(cityName);
+  currentCity = cityArray[cityNum];
+}
+
+// calling the getCity function
+getCity();
 
 // var APIKey = "28e4dca7e5a6a9336edc60ea02073b04";
 var APIKey = "166a433c57516f51dfab1f7edaed8413";
-var queryURL = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + cityName + "," + countryName + "&cnt=6&appid=" + APIKey;
-var currentQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey;
+var queryURL = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + currentCity.city + "," + currentCity.iso2 + "&cnt=6&appid=" + APIKey;
+var currentQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + currentCity.city + "," + currentCity.iso2 + "&appid=" + APIKey;
 function getForecast(){
     $.ajax({
       url: queryURL,

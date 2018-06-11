@@ -1,25 +1,37 @@
+var cityName = "";
+var cityNum = 0;
+var currentCity = {};
+
 $("#searchButton").on("click", function (event) {
   event.preventDefault();
   // Empty the image div
   $(".stock-image").empty();
-
-  // Get the inputs from the city and state textboxes
-  var newCity = $("#inputCity").val().trim();
-  var newState = $("#inputState").val().trim();
+  // Get the inputs from the city select
+  cityName = $("#inputCity").val();
+  console.log(cityName);
   
+  // function that will return the selected city object from the cityArray
+  function getCity() {
+    cityNum = cityNameArray.indexOf(cityName);
+    currentCity = cityArray[cityNum];
+  }
+
+  // calling the getCity function
+  getCity();
+
   // Set a search variable for the city / state value
   var citySearch = "";
 
-  // Check to see if eithr the city or state are blank
-  if (newCity == "" || newState == "") {
-    // If either are blank, default to...
-    var citySearch = "Raleigh, NC";
+  // Check to see if the city is blank
+  if (cityName == "") {
+    // If it's blank, default to...
+    citySearch = "Raleigh, NC";
   } else {
-    var citySearch = newCity + ", " + newState;
+    citySearch = currentCity.city + ", " + currentCity.stateShort;
   }
 
   // Log the result as a check
-  console.log("The city is :" + newCity + ", " + newState);
+  console.log("The city is : " + currentCity.city + ", " + currentCity.stateShort);
 
   // Establish the Flickr API parameters
   // Reference https://www.flickr.com/services/api/flickr.photos.search.html for info

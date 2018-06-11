@@ -47,21 +47,13 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputCity">City</label>
-                            <input type="text" class="form-control" id="inputCity">
-                        </div>
-                        <div class="form-group col-md-2">
-                            <label for="inputState">State</label>
-                            <select id="inputState" class="custom-select form-control">
-                                <option selected>Choose…</option>
-                                <option>NC</option>
+                            <select class="form-control selectpicker" data-live-search="true" data-size=5 data-title="Select a City" id="inputCity">
                             </select>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="inputCountry">Country</label>
-                            <input type="text" class="form-control" id="inputCountry" placeholder="United States" readonly>
+                        <div class="col-md-6">
+                          <button type="submit" class="btn btn-primary btn-lg ml-sm-3 my-sm-4" id="searchButton">Search</button>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg" id="searchButton">Search</button>
                 </form>
             </div>
         </div>
@@ -170,13 +162,13 @@
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 
     <!-- our javascript goes here -->
-    <script src="assets/javascript/cities.js"></script>
+    <script src="assets/javascript/cities-data.js"></script>
+    <script src="assets/javascript/city-select-options.js"></script>    
     <script src="assets/javascript/restaurant.js"></script>
     <script src="assets/javascript/weather.js"></script>
     <script src="assets/javascript/relevant-image.js"></script>
     <script src="assets/javascript/wiki-info.js"></script>
     <script src="assets/javascript/recent-searches.js"></script>
-
 </body>
 
 
