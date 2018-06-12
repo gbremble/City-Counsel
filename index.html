@@ -70,9 +70,19 @@
 
         </div>
     </div>
-
-    <div class="container" id="resultsDiv">
-
+    <div class="container">
+        <div class="card mb-3 w-100 d-none" id="weatherDiv">
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title">Weather</h3>
+            </div>
+            <div class='card-body' id='weatherCardBody'>
+                <div class="row" id="forecastRow">
+                  <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2" id="current">  
+                  </div>
+            </div>
+            </div>
+        </div>
+    </div>
     </div>
     <div class="container">
         <div class="card mb-3 w-100 d-none" id="restaurantCard">
@@ -97,6 +107,18 @@
             </div>
         </div>
     </div>
+    <!-- Upcoming events table -->
+    <div class="container">
+      <div class="card mb-3 w-100 d-none" id="eventsCard">
+          <div class="card-header bg-primary text-white">
+              <h3 class="card-title">Upcoming Events</h3>
+          </div>
+          <div class='card-body' id='eventsCardBody'>
+            <div class='row' id='eventsCardRow'>
+          </div>
+          </div>
+      </div>
+  </div>
     <!-- recent search cards -->
     <div class="container" id="recentSearchCards">
         <div class="row">
@@ -164,9 +186,11 @@
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 
     <!-- our javascript goes here -->
+
     <script src="assets/javascript/cities-data.js"></script>
-    <script src="assets/javascript/city-select-options.js"></script>
+    <script src="assets/javascript/city-select-options.js"></script>    
     <!-- <script src="assets/javascript/restaurant.js"></script>
+    <script src="assets/javascript/ticketmaster.js"></script>
     <script src="assets/javascript/weather.js"></script>
     <script src="assets/javascript/relevant-image.js"></script>
     <script src="assets/javascript/wiki-info.js"></script> -->
