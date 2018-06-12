@@ -12,7 +12,8 @@ $(document).ready(function() {
   // bs-select method to make changes appear
   $(".selectpicker").selectpicker("refresh");
 
-  $(".dropdown-toggle").on("focus", function(){
+  // function to disable searchButton until city select has focus
+  $(".dropdown-toggle").on("focus", function() {
     $("#searchButton").prop("disabled", false);
     console.log("success");
   });
