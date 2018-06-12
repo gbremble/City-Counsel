@@ -77,9 +77,9 @@
             </div>
             <div class='card-body' id='weatherCardBody'>
                 <div class="row" id="forecastRow">
-                  <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2" id="current">  
-                  </div>
-            </div>
+                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2" id="current">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -109,52 +109,26 @@
     </div>
     <!-- Upcoming events table -->
     <div class="container">
-      <div class="card mb-3 w-100 d-none" id="eventsCard">
-          <div class="card-header bg-primary text-white">
-              <h3 class="card-title">Upcoming Events</h3>
-          </div>
-          <div class='card-body' id='eventsCardBody'>
-            <div class='row' id='eventsCardRow'>
-          </div>
-          </div>
-      </div>
-  </div>
+        <div class="card mb-3 w-100 d-none" id="eventsCard">
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title">Upcoming Events</h3>
+            </div>
+            <div class='card-body' id='eventsCardBody'>
+                <div class='row' id='eventsCardRow'>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- recent search cards -->
-    <div class="container" id="recentSearchCards">
+    <div class="container" id="recent-search-cards-container">
         <div class="row">
             <div class="col">
                 <div class="card">
                     <h5 class="card-header bg-primary text-white">Recently Searched Cities</h5>
                     <div class="row my-3">
                         <div class="col mx-3">
-                            <div class="card-deck">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title" id="recentSearch-0">Raleigh, NC</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">Recently Searched</h6>
-                                    </div>
-                                    <!-- <div class="card-footer" style="background: none;">
-                                        <button type="button" class="btn btn-primary btn-sm btn-block">Search Here</button>
-                                    </div> -->
-                                </div>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title" id="recentSearch-1">Asheville, NC</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">Recently Searched</h6>
-                                    </div>
-                                    <!-- <div class="card-footer" style="background: none;">
-                                        <button type="button" class="btn btn-primary btn-sm btn-block">Search Here</button>
-                                    </div> -->
-                                </div>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title" id="recentSearch-2">Longercityname, NC</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">Recently Searched</h6>
-                                    </div>
-                                    <!-- <div class="card-footer" style="background: none;">
-                                        <button type="button" class="btn btn-primary btn-sm btn-block">Search Here</button>
-                                    </div> -->
-                                </div>
+                            <div class="card-deck" id="recent-search-cards">
+                                <!-- cards should populate here -->
                             </div>
                         </div>
                     </div>
@@ -188,7 +162,7 @@
     <!-- our javascript goes here -->
 
     <script src="assets/javascript/cities-data.js"></script>
-    <script src="assets/javascript/city-select-options.js"></script>    
+    <script src="assets/javascript/city-select-options.js"></script>
     <!-- <script src="assets/javascript/restaurant.js"></script>
     <script src="assets/javascript/ticketmaster.js"></script>
     <script src="assets/javascript/weather.js"></script>

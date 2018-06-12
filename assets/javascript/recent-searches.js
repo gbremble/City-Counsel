@@ -32,7 +32,7 @@ var currentCity = {};
 $('#searchButton').click(function (event) {
     event.preventDefault();
 
-    $('#recentSearchCards').toggleClass('d-none', true);
+    // $('#recent-search-cards-container').toggleClass('d-none', true);
 
     // Get the input from the city select
     cityName = $('#inputCity').val();
@@ -72,8 +72,9 @@ $('#searchButton').click(function (event) {
     //     stateShort: searchStateShort,
     //     time: firebase.database.ServerValue.TIMESTAMP
     // };
-
-    database.ref().child('searches').set({
+    
+    // write the search to the database
+    database.ref().child('searches').push({
         city: searchCity,
         latitude: searchLat,
         longitude: searchLon,
@@ -94,13 +95,17 @@ $('#searchButton').click(function (event) {
 
 });
 
-database.ref().limitToLast(3).on('value', function (snapshot) {
-    var searchesObject = JSON.stringify(snapshot.val())
-    // update the card text
-    // $("#recentSearch-0").text(snapshot.val().city + ", " + snapshot.val().stateShort);
-    for (var i = 0; i < 3; i++) {
-        $('#recentSearch-' + i).text(searchesObject[i].city + ", " + searchesObject[i].stateShort);
-    }
+var ref = firebase.database().ref('searches');
+
+ref.orderByChild("time").limitToLast(4).on("child_added", function(snapshot) {
+    console.log(snapshot.key);
+
+    // messy variables to store the card formatting and card text
+    var cardStart = '<div class="card"><div class="card-body"><h5 class="card-title">';
+    var cardEnd = '</h5><h6 class="card-subtitle mb-2 text-muted">Recently Searched</h6></div><!-- <div class="card-footer" style="background: none;"><button type="button" class="btn btn-primary btn-sm btn-block">Search Here</button></div> --></div>';
+    var cardText = snapshot.val().city + ", " + snapshot.val().stateShort;
+
+    $('#recent-search-cards').prepend(cardStart + cardText + cardEnd);
 
     console.log(JSON.stringify(snapshot.val(), null, 4));
 
@@ -126,66 +131,27 @@ database.ref().limitToLast(3).on('value', function (snapshot) {
 // // path will be something like
 // // 'https://sample-app.firebaseio.com/message_list/-IKo28nwJLH0Nc5XeFmj'
 
-var ref = firebase.database().ref("dinosaurs");
-ref.orderByChild("weight").limitToLast(3).on("child_added", function(snapshot) {
-  // This callback will be triggered exactly two times, unless there are
-  // fewer than two dinosaurs stored in the Database. It will also get fired
-  // for every new, heavier dinosaur that gets added to the data set.
-  console.log(snapshot.key);
-});
+// var ref = firebase.database().ref("dinosaurs");
+// ref.orderByChild("time").limitToLast(3).on("child_added", function(snapshot) {
+//   // This callback will be triggered exactly two times, unless there are
+//   // fewer than two dinosaurs stored in the Database. It will also get fired
+//   // for every new, heavier dinosaur that gets added to the data set.
+//   console.log(snapshot.key);
+// });
 
-// Basic usage of .once() to read the data located at ref.
-ref.once('value')
-  .then(function(dataSnapshot) {
-    // handle read data.
-  });
+// // Basic usage of .once() to read the data located at ref.
+// ref.once('value')
+//   .then(function(dataSnapshot) {
+//     // handle read data.
+//   });
 
-  // Write some data with a timestamp
-ref.push({
-    foo: 'bar',
-    date: Firebase.ServerValue.TIMESTAMP
-});
+//   // Write some data with a timestamp
+// ref.push({
+//     foo: 'bar',
+//     date: Firebase.ServerValue.TIMESTAMP
+// });
 
-// Later, retrieve the data by ordered date
-ref.orderByChild('date').on('child_added', function(snapshot) {
-    //Do something with ordered children
-});
-
-var testObject = {
-    "-LEgiJcMKEC0z3NLTbnd": {
-        "city": "Trenton",
-        "country": "United States of America",
-        "iso2": "US",
-        "iso3": "USA",
-        "latitude": 40.2169625,
-        "longitude": -74.74335535,
-        "population": 225713,
-        "stateLong": "New Jersey",
-        "stateShort": "NJ",
-        "time": 1528684956301
-    },
-    "-LEgj_V-Wyp-3DGM9rfH": {
-        "city": "Bangor",
-        "country": "United States of America",
-        "iso2": "US",
-        "iso3": "USA",
-        "latitude": 44.80115297,
-        "longitude": -68.77834477,
-        "population": 40843,
-        "stateLong": "Maine",
-        "stateShort": "ME",
-        "time": 1528685287516
-    },
-    "-LEgk1JWUq0XKUnY2ZlD": {
-        "city": "Key West",
-        "country": "United States of America",
-        "iso2": "US",
-        "iso3": "USA",
-        "latitude": 24.55523114,
-        "longitude": -81.78274479,
-        "population": 27011.5,
-        "stateLong": "Florida",
-        "stateShort": "FL",
-        "time": 1528685405569
-    }
-}
+// // Later, retrieve the data by ordered date
+// ref.orderByChild('date').on('child_added', function(snapshot) {
+//     //Do something with ordered children
+// });
