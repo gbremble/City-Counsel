@@ -40,13 +40,13 @@ $('#searchButton').click(function (event) {
 
     // function that will return the selected city object from the cityArray
     function getCity() {
-      cityNum = cityNameArray.indexOf(cityName);
-      currentCity = cityArray[cityNum];
+        cityNum = cityNameArray.indexOf(cityName);
+        currentCity = cityArray[cityNum];
     }
 
     // calling the getCity function
     getCity();
-    
+
     // interpret the values from the recent search, store them in local object, push to Firebase
     var searchCity = currentCity.city;
     var searchLat = currentCity.lat;
@@ -59,7 +59,7 @@ $('#searchButton').click(function (event) {
     var searchIso3 = currentCity.iso3;
     var searchStateLong = currentCity.stateLong;
     var searchStateShort = currentCity.stateShort;
-    
+
     // write the search to the database
     database.ref().child('searches').push({
         city: searchCity,
@@ -84,7 +84,7 @@ $('#searchButton').click(function (event) {
 
 var ref = firebase.database().ref('searches');
 
-ref.orderByChild("time").limitToLast(6).on("child_added", function(snapshot) {
+ref.orderByChild("time").limitToLast(6).on("child_added", function (snapshot) {
     console.log(snapshot.key);
 
     // messy variables to store the card formatting and card text
