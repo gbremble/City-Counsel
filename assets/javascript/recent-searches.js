@@ -1,22 +1,22 @@
-// // Initialize Firebase
-// var config = {
-//     apiKey: "AIzaSyCrbIl9_P0sxXaAkt2jjLoxx7w89Rf2iFU",
-//     authDomain: "group3-project1.firebaseapp.com",
-//     databaseURL: "https://group3-project1.firebaseio.com",
-//     projectId: "group3-project1",
-//     storageBucket: "group3-project1.appspot.com",
-//     messagingSenderId: "435408615728"
-// };
-
-// test database for testing this
+// Initialize Firebase
 var config = {
-    apiKey: "AIzaSyAr3LcvjfLpiIBkq3g1-L_Rrn3ui1DC13U",
-    authDomain: "hello-world-7574c.firebaseapp.com",
-    databaseURL: "https://hello-world-7574c.firebaseio.com",
-    projectId: "hello-world-7574c",
-    storageBucket: "hello-world-7574c.appspot.com",
-    messagingSenderId: "847466044587"
-  };
+    apiKey: "AIzaSyCrbIl9_P0sxXaAkt2jjLoxx7w89Rf2iFU",
+    authDomain: "group3-project1.firebaseapp.com",
+    databaseURL: "https://group3-project1.firebaseio.com",
+    projectId: "group3-project1",
+    storageBucket: "group3-project1.appspot.com",
+    messagingSenderId: "435408615728"
+};
+
+// // test database for testing this
+// var config = {
+//     apiKey: "AIzaSyAr3LcvjfLpiIBkq3g1-L_Rrn3ui1DC13U",
+//     authDomain: "hello-world-7574c.firebaseapp.com",
+//     databaseURL: "https://hello-world-7574c.firebaseio.com",
+//     projectId: "hello-world-7574c",
+//     storageBucket: "hello-world-7574c.appspot.com",
+//     messagingSenderId: "847466044587"
+//   };
 
 firebase.initializeApp(config);
 
@@ -32,6 +32,7 @@ var currentCity = {};
 $('#searchButton').click(function (event) {
     event.preventDefault();
 
+    // this will hide the cards after a search is performed
     // $('#recent-search-cards-container').toggleClass('d-none', true);
 
     // Get the input from the city select
@@ -58,20 +59,6 @@ $('#searchButton').click(function (event) {
     var searchIso3 = currentCity.iso3;
     var searchStateLong = currentCity.stateLong;
     var searchStateShort = currentCity.stateShort;
-
-    // store the search in a temporary variable
-    // var newSearch = {
-    //     city: searchCity,
-    //     latitude: searchLat,
-    //     longitude: searchLon,
-    //     population: searchPop,
-    //     country: searchCountry,
-    //     iso2: searchIso2,
-    //     iso3: searchIso3,
-    //     stateLong: searchStateLong,
-    //     stateShort: searchStateShort,
-    //     time: firebase.database.ServerValue.TIMESTAMP
-    // };
     
     // write the search to the database
     database.ref().child('searches').push({
@@ -97,11 +84,11 @@ $('#searchButton').click(function (event) {
 
 var ref = firebase.database().ref('searches');
 
-ref.orderByChild("time").limitToLast(4).on("child_added", function(snapshot) {
+ref.orderByChild("time").limitToLast(6).on("child_added", function(snapshot) {
     console.log(snapshot.key);
 
     // messy variables to store the card formatting and card text
-    var cardStart = '<div class="card"><div class="card-body"><h5 class="card-title">';
+    var cardStart = '<div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 my-2"><div class="card"><div class="card-body"><h5 class="card-title">';
     var cardEnd = '</h5><h6 class="card-subtitle mb-2 text-muted">Recently Searched</h6></div><!-- <div class="card-footer" style="background: none;"><button type="button" class="btn btn-primary btn-sm btn-block">Search Here</button></div> --></div>';
     var cardText = snapshot.val().city + ", " + snapshot.val().stateShort;
 
@@ -155,3 +142,35 @@ ref.orderByChild("time").limitToLast(4).on("child_added", function(snapshot) {
 // ref.orderByChild('date').on('child_added', function(snapshot) {
 //     //Do something with ordered children
 // });
+
+/*
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title" id="recentSearch-0">Raleigh, NC</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Recently Searched</h6>
+    </div>
+    <!-- <div class="card-footer" style="background: none;">
+        <button type="button" class="btn btn-primary btn-sm btn-block">Search Here</button>
+    </div> -->
+</div>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title" id="recentSearch-1">Asheville, NC</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Recently Searched</h6>
+    </div>
+    <!-- <div class="card-footer" style="background: none;">
+        <button type="button" class="btn btn-primary btn-sm btn-block">Search Here</button>
+    </div> -->
+</div>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title" id="recentSearch-2">Longercityname, NC</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Recently Searched</h6>
+    </div>
+    <!-- <div class="card-footer" style="background: none;">
+        <button type="button" class="btn btn-primary btn-sm btn-block">Search Here</button>
+    </div> -->
+</div>
+
+*/
