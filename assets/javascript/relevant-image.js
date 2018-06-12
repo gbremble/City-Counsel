@@ -9,7 +9,7 @@ $("#searchButton").on("click", function (event) {
   // Get the inputs from the city select
   cityName = $("#inputCity").val();
   console.log(cityName);
-  
+
   // function that will return the selected city object from the cityArray
   function getCity() {
     cityNum = cityNameArray.indexOf(cityName);
@@ -45,13 +45,6 @@ $("#searchButton").on("click", function (event) {
   var content_type = 7; // all
   var addedText = ", skyline";
 
-  // Create variables for min / max to create a random number of pictures to choose from
-  var targetMax = 5;
-  var targetMin = 0;
-
-  // Create a variable for the random target number
-  var targetNumber = Math.floor(Math.random() * targetMax) + targetMin;
-
   // Construct a queryURL based on the Flickr parameters
   var queryURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + api_key + "&text=" + citySearch + addedText + "&extras=" + extras + "&page=" + page + "&per_page=" + per_page + "&safe_search=" + safe_search + "&content_type=" + content_type + "&format=" + format + "&nojsoncallback=" + callback;
 
@@ -67,15 +60,24 @@ $("#searchButton").on("click", function (event) {
     .then(function (response) {
       console.log(response);
 
+      // Get the length of the photos array and store it in a variable
+      var arrayLength = response.photos.photo.length;
+
+      // Create variables for min / max to create a random number
+      var targetMax = arrayLength - 1;
+      var targetMin = 0;
+
+      // Create a variable for the random target number
+      var targetNumber = Math.floor(Math.random() * targetMax) + targetMin;
+
       // Create a an image tag
       var stockImage = $("<img>");
       stockImage.addClass("img-responsive img-thumbnail");
 
-      // Set the stock image source to the Flickr result
+      // Set the stock image source to the Flickr result (random selection from the photo array)
       stockImage.attr("src", response.photos.photo[targetNumber].url_l);
 
       // Append the image to the image div
       $(".stock-image").append(stockImage);
-
     });
 });
