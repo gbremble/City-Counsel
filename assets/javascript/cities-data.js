@@ -7987,7 +7987,7 @@ var cityArray = [
     "stateShort": "ID"
   },
   {
-    "city": "Washington, D.C.",
+    "city": "Washington",
     "lat": 38.89954938,
     "lon": -77.00941858,
     "pop": 2445216.5,
