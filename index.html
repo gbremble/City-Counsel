@@ -62,93 +62,101 @@
                 </form>
             </div>
         </div>
+
         <!-- end of search fields -->
 
         <!-- Image and short Wikipedia description-->
-        <div class="row">
-            <div class="stock-image col-xs-12 col-md-6">
+        <div class="container">
+            <div class="card mb-3" id="wikiDiv">
+                <h5 class="card-title card-header bg-dark text-white">About This City</h5>
+                <div class='card-body' id='wikiCardBody'>
+                    <div class="row">
+                        <div class="stock-image col-xs-12 col-md-6">
 
-            </div>
-            <div class="wiki-info col-xs-12 col-md-6">
+                        </div>
+                        <div class="wiki-info col-xs-12 col-md-6">
 
-            </div>
+                        </div>
 
-        </div>
-    </div>
-    <!-- end of image and Wikipedia information -->
-
-    <!-- weather information -->
-    <div class="container">
-        <div class="card mb-3 d-none" id="weatherDiv">
-            <h5 class="card-title card-header bg-dark text-white">Weather</h5>
-            <div class='card-body' id='weatherCardBody'>
-                <div class="row" id="forecastRow">
-                    <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2" id="current">
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- end of weather -->
+        <!-- end of image and Wikipedia information -->
 
-    <!-- restaurant information -->
-    <div class="container">
-        <div class="card mb-3 d-none" id="restaurantCard">
-            <h5 class="card-title card-header bg-dark text-white">Popular Restaurants</h5>
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Restaurant Name</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Cuisine</th>
-                            <th scope="col">Rating</th>
-                            <th scope="col">Price Range</th>
-                        </tr>
-                    </thead>
-                    <tbody id="restaurantTable">
-                        <!-- restaurant table rows populate here -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <!-- end of restaurant information -->
-
-    <!-- Upcoming events table -->
-    <div class="container">
-        <div class="card mb-3 d-none" id="eventsCard">
-            <h5 class="card-header bg-dark text-white">Upcoming Events</h5>
-            <div class='card-body' id='eventsCardBody'>
-                <div class='row' id='eventsCardRow'>
+        <!-- weather information -->
+        <div class="container">
+            <div class="card mb-3 d-none" id="weatherDiv">
+                <h5 class="card-title card-header bg-dark text-white">Weather</h5>
+                <div class='card-body' id='weatherCardBody'>
+                    <div class="row" id="forecastRow">
+                        <div class="col-sm-2 col-md-2 col-lg-2 col-xl-2" id="current">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- end of events table -->
+        <!-- end of weather -->
 
-    <!-- recent search cards -->
-    <div class="container" id="recent-search-cards-container">
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <h5 class="card-header bg-dark text-white">Recently Searched Cities</h5>
-                    <div class="row my-2">
-                        <div class="col mx-4">
-                            <div class="row" id="recent-search-cards">
-                                <!-- cards should populate here -->
+        <!-- restaurant information -->
+        <div class="container">
+            <div class="card mb-3 d-none" id="restaurantCard">
+                <h5 class="card-title card-header bg-dark text-white">Popular Restaurants</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Restaurant Name</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Cuisine</th>
+                                <th scope="col">Rating</th>
+                                <th scope="col">Price Range</th>
+                            </tr>
+                        </thead>
+                        <tbody id="restaurantTable">
+                            <!-- restaurant table rows populate here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- end of restaurant information -->
+
+        <!-- Upcoming events table -->
+        <div class="container">
+            <div class="card mb-3 d-none" id="eventsCard">
+                <h5 class="card-header bg-dark text-white">Upcoming Events</h5>
+                <div class='card-body' id='eventsCardBody'>
+                    <div class='row' id='eventsCardRow'>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of events table -->
+
+        <!-- recent search cards -->
+        <div class="container" id="recent-search-cards-container">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <h5 class="card-header bg-dark text-white">Recently Searched Cities</h5>
+                        <div class="row my-2">
+                            <div class="col mx-4">
+                                <div class="row" id="recent-search-cards">
+                                    <!-- cards should populate here -->
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- end of recent search cards -->
     </div>
-    <!-- end of recent search cards -->
-
     <footer class="footer">
         <div class="container">
-            City Counsel is a collaborative effort by GB, MB, MB, and SJ | Copyright &copy; | Photo by Vita Vilcina on Unsplash
+            City Counsel is a collaborative effort by GB, MB, MB, and SJ | Copyright &copy; | Photo by
+            Vita Vilcina on Unsplash
         </div>
     </footer>
 
