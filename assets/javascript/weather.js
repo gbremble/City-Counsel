@@ -63,7 +63,7 @@ function getForecast(){
       weathDiv.addClass("card ml-0 mr-0 mt-2 mb-2 h-95")
       weathDiv.attr("dayNum", i+1);
       //float the name and weather icon on opposite sides of the card header
-      weathDiv.append("<div class='card-header bg-secondary text-white'><div class='float-left'><h4 class='align-bottom pb-0 mb-0'>" + time + "</h4></div><div class='float-right small mt-0 pt-0'>" + iconImg + "</div><div class='clearfix'></div></div>");
+      weathDiv.append("<div class='card-header bg-secondary text-white'><div class='float-left'><h3 class='align-bottom pb-0 mb-0'>" + time + "</h3></div><div class='float-right small mt-0 pt-0'>" + iconImg + "</div><div class='clearfix'></div></div>");
       //create the card body to contain conditions and temperatures
       var weathBody = $("<div class='card-body mb-4 mt-4'>");
       weathBody.append('<h3 class ="card-title text-truncate align-top pt-0 pb-0 mt-0 mb-0">' + conditions + "</h3><br>")
