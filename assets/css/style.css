@@ -51,11 +51,12 @@ body {
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 30px;
-  line-height: 30px;
+  height: 60px;
+  line-height: 60px;
   /* Vertically center the text there */
   font-size: 12px;
   color: #fff;
+  font-family: 'Montserrat', sans-serif;
   text-align: center;
   background-color: #222;
 }
