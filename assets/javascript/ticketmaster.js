@@ -26,7 +26,7 @@ $("#searchButton").on("click", function (event) {
 
   cityLat = currentCity.lat;
   cityLon = currentCity.lon;
-  startDate = (moment().format('YYYY-MM-DD')) + "T00:00:00Z"
+  startDate = (moment().add(1, 'days')).format('YYYY-MM-DD') + "T" + moment.utc().format('HH:mm:ss') + "Z";
   
 console.log(cityLat);
 console.log(cityLon);
@@ -62,7 +62,7 @@ function getEvents(){
         var localDate = moment(events[i].dates.start.localDate).format('MMMM DD');
         var localTime = moment(events[i].dates.start.localTime, 'HH:mm:ss').format('h:mma');
         //exception handling in case of no time listed
-        if (localTime === "Invalid Date") {
+        if (localTime === "Invalid date") {
           localTime = ""
         }
         //set the URL image to empty
@@ -80,20 +80,24 @@ function getEvents(){
         //create a card header image that is also a link to the concert page
         var eventImg = $('<a href="' + eventURL + '"><img class="card-img-top img-responsive" src="' + eventImgURL + '"></a>')
         // create card body
-        var eventCardBody = $('<div class="card-body">')
+        var eventCardBody = $('<div class="card-body d-flex flex-column">')
         // display event name as card title
-        var eventName = "<h4 class='card-title '>" + events[i].name; "</h4>" + "<br>"
+        var eventName = "<h4 class='card-title'>" + events[i].name; "</h4>" + "<br>"
         // display date with float left and float right
-        var eventDate = "<div class='text-left pull-left float-left'><div class='mb-0 pb-0'><h5>" + localDay + "</h5></div><h5 class='small mt-0 pt-0'>" + localDate + "</h5></div><h5><div class='mt-0 pt-0 text-right pull-right float-right'>" + localTime + "</div></h5><div class='clearfix'></div></h></br>";
+        var eventDate = "<div><h5 class='small'>" + localDate + "</h5></div><h5>" + localDay + "</h5>"
+        
+        var eventDay = "<div class='mt-auto'><h5>" + localTime + "</h5></div>"
+        
+        //<h5><div class='mb-auto'>" + localTime + "</div></h5><div class='clearfix'></div></h></br>";
 
         
 
         
         // display venue
-        var eventVenue = events[i]._embedded.venues[0].name + "<br>"
+        var eventVenue = '<div class="text-truncate">' + events[i]._embedded.venues[0].name + "<br>"
 
         // display address below
-        var eventAddress = "<p class='text-truncate small'>" + events[i]._embedded.venues[0].address.line1 + ", " + events[i]._embedded.venues[0].city.name + "</p>"
+        var eventAddress = "<p class='text-truncate small'>" + events[i]._embedded.venues[0].address.line1 + ", " + events[i]._embedded.venues[0].city.name + "</p></div></div>"
 
        
         // add all the data to the row
@@ -101,7 +105,8 @@ function getEvents(){
         eventDiv.append(eventImg);
         eventCardBody.append(eventName);
         eventCardBody.append(eventDate);
-        eventCardBody.append(eventVenue)
+        eventCardBody.append(eventDay);
+        eventCardBody.append(eventVenue);
         eventCardBody.append(eventAddress);
         // eventCardBody.append(eventPrice);
         eventDiv.append(eventCardBody)

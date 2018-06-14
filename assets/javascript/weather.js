@@ -65,7 +65,7 @@ function getForecast(){
       //float the name and weather icon on opposite sides of the card header
       weathDiv.append("<div class='card-header bg-secondary text-white'><div class='float-left'><h3 class='align-bottom pb-0 mb-0'>" + time + "</h3></div><div class='float-right small mt-0 pt-0'>" + iconImg + "</div><div class='clearfix'></div></div>");
       //create the card body to contain conditions and temperatures
-      var weathBody = $("<div class='card-body mb-4 mt-4'>");
+      var weathBody = $("<div class='card-body d-flex flex-column'>");
       weathBody.append('<h3 class ="card-title text-truncate align-top pt-0 pb-0 mt-0 mb-0">' + conditions + "</h3><br>")
       weathBody.append("<h5 class='card-subtitle'>High: " + tempHigh + "º</h5>");
       weathBody.append("<h5 class='card-subtitle'>Low: " + tempLow + "º </h5>");
@@ -111,7 +111,7 @@ function getCurrentWeather(){
       //adding a header with title and icon
       weathDiv.append("<div class='card-header bg-secondary text-white'><div class='float-left'><h3 class='align-bottom pb-0 mb-0'> Now </h3></div><div class='float-right small mt-0 pt-0'>" + iconImg + "</div><div class='clearfix'></div></div>");
       //creating a card body to hold the conditions and temp
-      var weathBody = $("<div class='card-body mb-4  mt-4'>");
+      var weathBody = $("<div class='card-body d-flex flex-column'>");
       weathBody.append('<h3 class ="card-title text-truncate align-top pt-0 pb-200 mt-0 mb-0">' + conditions + "</h3><br>")
       weathBody.append("<h2 class='card-subtitle lh-2'>" + temp + "º</h2>");
       //combining the ingredients

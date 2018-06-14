@@ -7,6 +7,8 @@ $("#searchButton").on("click", function (event) {
   // Empty the Wikipedia info div
   $(".wiki-info").empty();
 
+  $('#wikiDiv').toggleClass('d-none', false);
+
   // Get the inputs from the city select
   cityName = $("#inputCity").val();
 
