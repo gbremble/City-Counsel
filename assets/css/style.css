@@ -47,8 +47,21 @@ body {
   margin-bottom: auto;
 }
 
-.bootstrap-select .dropdown-toggle:focus {
+.bootstrap-select .dropdown-toggle:focus,
+.bootstrap-select .dropdown-menu li:focus,
+.bootstrap-select .dropdown-menu li a:focus {
   outline: 5px auto #343a40 !important;
+}
+
+.form-control:focus {
+  border-color: #343a40;
+  box-shadow: 0 0 0 0.2rem #343a40;
+  opacity: .65;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: #343a40;
 }
 
 .footer {
