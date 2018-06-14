@@ -12,9 +12,15 @@ $(document).ready(function() {
   // bs-select method to make changes appear
   $(".selectpicker").selectpicker("refresh");
 
-  // function to disable searchButton until city select has focus
-  $(".dropdown-toggle").on("focus", function() {
-    $("#searchButton").prop("disabled", false);
-    console.log("success");
+  // disables the search button on page load
+  $("#searchButton").prop("disabled", true);
+
+  // removes the disabled attribute from the search button when an item is selected
+  $('#inputCity').change(function() {
+    var validated = true;
+    if($('#inputCity').val().length === 0)
+    validated = false;
+    if(validated)
+    $("#searchButton").removeAttr("disabled");
   });
 });
