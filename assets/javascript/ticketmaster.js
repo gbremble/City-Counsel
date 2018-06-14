@@ -78,7 +78,7 @@ function getEvents(){
         //url to buy tickets. this functionality is also dodgy within the API results.
         var eventURL = events[i].url;
         //create a card header image that is also a link to the concert page
-        var eventImg = $('<a href="' + eventURL + '"><img class="card-img-top img-responsive" src="' + eventImgURL + '"></a>')
+        var eventImg = $('<a href="' + eventURL + '" target="_blank"><img class="card-img-top img-responsive" src="' + eventImgURL + '"></a>')
         // create card body
         var eventCardBody = $('<div class="card-body d-flex flex-column">')
         // display event name as card title
