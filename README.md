@@ -1,47 +1,53 @@
-# Group Project 1
+# City Counsel
 
-## Project Goal:
-Build Something Awesome
+City Counsel is a web application that provides a user with helpful information on a given city.
+* relevant photo
+* description
+* weather forecast
+* popular restaurants
+* upcoming events
 
-## Requirements:
-- [ ] Must uses at least two APIs
-- [ ] Must use AJAX to pull data
-- [ ] Must utilize at least one new library or technology that we haven't discussed
-- [ ] Must have a polished frontend / UI
-- [ ] Must meet good quality coding standards (indentation, scoping, naming)
-- [ ] Must NOT use alerts, confirms, or prompts (look into modals!)
-- [ ] Must have some sort of repeating element (table, columns, etc)
-- [ ] Must use Bootstrap or Alternative CSS Framework
-- [ ] Must be Deployed (GitHub Pages or Firebase)
-- [ ] Must have User Input Validation
+## Motivation
+City Counsel is the collaborative effort representing group project 1 from group 3, and ties in learnings to date (as well as exploration of new tech).  Production timeline was two weeks.
 
-### Presentation Date:
-Two Weeks from Today
+The application complies with the guidelines provided to the team.  Namely:
+* It utilizes AJAX to pull data
+* Utilizes at least one new library or technology not yet covered / discussed
+* It has a polished UI, and does not use alerts, confirms, or prompts.
+* It makes use of a repeating element (table)
+* Uses Bootstrap for responsiveness
+* Has user input validation
+* Is deployed (GitHub pages / Firebase)
 
-### Metrics on which we'll be graded/judged
-- Concept
-- Design
-- Functionality
-- Collaboration
-- Presentation
+## Project Usefulness
+This webapp is useful as a tool for aggregating information from multiple sources into one location, which saves the user from searching through multiple browser tabs that are focused on gathering a specific type of information, as well as keeping track / organizing that info once it's gathered.  City Counsel provides the user with multiple relevant pieces of information in one easily scrollable location.
 
-### Potential Awards
-- Most awe-inspiring
-- Most useful
-- Most creative
-- Best use of tech
-- Best UI/UX
-- Most hilarious
-- Most disruptive
-- Most socially conscious
+## Getting Started
+Upon loading, City Counsel presents the user with a dropdown box of available cities to search, a button for executing the search, and a view of recent searches as a way of indicating what is trending.
 
-### API Suggestions
-- Allows CORS
-- Simple (or no) authentication
-- JSON response returned
-- Well-documented
+1.  The user selects their city from the city dropdown input box.
+2.  Once they have their city, they click the search button to the right.
+3.  Scroll down to review a relevant image and read a short description of the chosen city.
+4.  Review the city's current weather and upcoming forecast.
+5.  Learn about popular restaurants, and click on the provided links to view more information.
+6.  View the upcoming events listing to learn about interesting upcoming events.
 
-### Consider Using the Following Tools
-- GitHub pull requests
-- GitHub Issues: to track bugs, feature requests, etc.
-- Trello
+## APIs / Libraries / Technology used
+In order to provide the user with this information, the following APIs, libraries, and technology are used:
+
+### APIs
+* Flickr
+* Open Weather Map
+* Zomato
+* Ticketmaster
+
+### Libraries / Technology
+* Firebase
+* Bootstrap
+* Bootstrap Select
+* MomentJS
+* AJAX
+* Google Fonts
+
+## Credits
+City Counsel was created by Greg Bremble, Mick Burgess, Mitchell Brooks, and Scott Johnson.  Header photo by Vita Vilcina on Unsplash.com.
