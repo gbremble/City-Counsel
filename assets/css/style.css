@@ -47,6 +47,10 @@ body {
   margin-bottom: auto;
 }
 
+.bootstrap-select .dropdown-toggle:focus {
+  outline: 5px auto #343a40 !important;
+}
+
 .footer {
   position: absolute;
   bottom: 0;

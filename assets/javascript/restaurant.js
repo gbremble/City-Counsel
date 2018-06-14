@@ -75,7 +75,7 @@ $("#searchButton").on("click", function(event) {
         var restaurantCell = $("<td>");
         
         // make the restaurant name a link to the restaurant's Zomato page
-        var restaurantName = "<a href=" + results[j].restaurant.url + ">" + results[j].restaurant.name + "</a>";
+        var restaurantName = "<a href=" + results[j].restaurant.url + ' target="_blank">' + results[j].restaurant.name + "</a>";
         
         // append store restaurant name in into restaurantCell
         restaurantCell.append(restaurantName);
