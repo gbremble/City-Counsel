@@ -50,4 +50,4 @@ In order to provide the user with this information, the following APIs, librarie
 * Google Fonts
 
 ## Credits
-City Counsel was created by Greg Bremble, Mick Burgess, Mitchell Brooks, and Scott Johnson.  Header photo by Vita Vilcina on Unsplash.com.
+City Counsel was created by Greg Bremble, Mitchell Brooks, Mick Burgess, and Scott Johnson.  Header photo by Vita Vilcina on Unsplash.com.
